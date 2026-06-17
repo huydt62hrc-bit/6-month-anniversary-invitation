@@ -1,213 +1,672 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Dành cho em ❤️</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lời mời đi date dành cho em</title>
 
 <style>
+:root{
+    --pink:#ff4f8b;
+    --hot-pink:#ff2f75;
+    --soft-pink:#ffe6f1;
+    --cream:#fff9fb;
+    --purple:#7b61ff;
+    --text:#352632;
+    --muted:#7b6674;
+    --white:#ffffff;
+    --shadow:0 24px 80px rgba(255,79,139,.22);
+}
+
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
-    background:linear-gradient(135deg,#ffe6f0,#fff7fb);
-    font-family:Arial, sans-serif;
+    min-height:100vh;
+    font-family:Arial, Helvetica, sans-serif;
+    color:var(--text);
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
     text-align:center;
     overflow:hidden;
+    background:
+        radial-gradient(circle at 15% 15%, rgba(255,126,179,.28), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(123,97,255,.18), transparent 28%),
+        radial-gradient(circle at 50% 95%, rgba(255,207,225,.45), transparent 34%),
+        linear-gradient(135deg,#ffe6f0,#fff8fc 52%,#fff0f7);
+}
+
+.bg-shape{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(2px);
+    opacity:.55;
+    animation:drift 12s ease-in-out infinite alternate;
+    pointer-events:none;
+}
+
+.bg-shape.one{
+    width:180px;
+    height:180px;
+    background:#ffd0e2;
+    top:8%;
+    left:7%;
+}
+
+.bg-shape.two{
+    width:240px;
+    height:240px;
+    background:#e8ddff;
+    bottom:5%;
+    right:5%;
+    animation-delay:1.5s;
+}
+
+.bg-shape.three{
+    width:120px;
+    height:120px;
+    background:#fff0b8;
+    bottom:18%;
+    left:13%;
+    animation-delay:.6s;
+}
+
+@keyframes drift{
+    from{ transform:translate(0,0) scale(1); }
+    to{ transform:translate(24px,-18px) scale(1.08); }
 }
 
 .container{
-    width:90%;
-    max-width:700px;
+    position:relative;
+    width:min(92vw,760px);
+    z-index:5;
 }
 
 .card{
-    background:white;
-    padding:40px;
-    border-radius:25px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    position:relative;
+    background:rgba(255,255,255,.82);
+    border:1px solid rgba(255,255,255,.95);
+    backdrop-filter:blur(14px);
+    padding:34px;
+    border-radius:34px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(120deg, rgba(255,255,255,.35), transparent 38%),
+        radial-gradient(circle at 50% 0%, rgba(255,79,139,.13), transparent 34%);
+    pointer-events:none;
+}
+
+.content{
+    position:relative;
+    z-index:2;
+}
+
+.top-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    margin-bottom:22px;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:9px 14px;
+    border-radius:999px;
+    background:var(--soft-pink);
+    color:var(--hot-pink);
+    font-size:14px;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+.progress-wrap{
+    flex:1;
+    height:10px;
+    background:#f5dce8;
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.progress{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,var(--pink),var(--purple));
+    border-radius:999px;
+    transition:width .45s ease;
+}
+
+.kicker{
+    color:var(--purple);
+    font-weight:800;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    font-size:13px;
+    margin-bottom:10px;
 }
 
 h1{
-    color:#ff4f8b;
+    margin:0 auto 14px;
+    max-width:650px;
+    color:var(--hot-pink);
+    font-size:clamp(30px,5vw,48px);
+    line-height:1.08;
 }
 
 p{
-    font-size:20px;
+    margin:0 auto;
+    max-width:620px;
+    font-size:clamp(18px,2.8vw,22px);
     line-height:1.6;
+    color:#4a3945;
+}
+
+.note{
+    min-height:36px;
+    margin:18px auto 6px;
+    color:var(--muted);
+    font-size:15px;
+    line-height:1.45;
+}
+
+.reaction{
+    min-height:44px;
+    margin:16px auto 4px;
+    padding:12px 16px;
+    border-radius:18px;
+    background:#fff4f8;
+    color:#8a3457;
+    font-size:16px;
+    line-height:1.45;
+    opacity:0;
+    transform:translateY(8px);
+    transition:all .3s ease;
+}
+
+.reaction.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.choices{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-top:22px;
 }
 
 button{
-padding:12px 25px;
-margin:10px;
-border:none;
-border-radius:999px;
-background:#ff4f8b;
-color:white;
-font-size:18px;
-cursor:pointer;
-transition:all 0.3s ease;
+    min-height:58px;
+    padding:14px 18px;
+    border:none;
+    border-radius:999px;
+    background:linear-gradient(135deg,var(--pink),#ff7aaa);
+    color:white;
+    font-size:16px;
+    font-weight:800;
+    cursor:pointer;
+    transition:transform .22s ease, box-shadow .22s ease, filter .22s ease;
+    box-shadow:0 12px 26px rgba(255,79,139,.24);
+}
+
+button.secondary{
+    background:linear-gradient(135deg,#7b61ff,#a391ff);
+    box-shadow:0 12px 26px rgba(123,97,255,.2);
 }
 
 button:hover{
-    transform:scale(1.05);
+    transform:translateY(-3px) scale(1.02);
+    box-shadow:0 16px 32px rgba(255,79,139,.3);
+    filter:saturate(1.08);
 }
 
-.heart{
+button.secondary:hover{
+    box-shadow:0 16px 32px rgba(123,97,255,.26);
+}
+
+button:active{
+    transform:translateY(0) scale(.98);
+}
+
+button:disabled{
+    cursor:not-allowed;
+    opacity:.72;
+}
+
+.meter{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:18px;
+    font-size:13px;
+    color:var(--muted);
+}
+
+.meter span{
+    padding:8px 12px;
+    border-radius:999px;
+    background:rgba(255,255,255,.66);
+    border:1px solid #ffe1ed;
+}
+
+.ticket{
+    display:none;
+    position:relative;
+    z-index:2;
+}
+
+.ticket.show{
+    display:block;
+    animation:pop .5s ease both;
+}
+
+@keyframes pop{
+    from{ opacity:0; transform:translateY(18px) scale(.97); }
+    to{ opacity:1; transform:translateY(0) scale(1); }
+}
+
+.ticket-box{
+    margin:24px auto 0;
+    max-width:560px;
+    padding:22px;
+    border:2px dashed #ff9bc0;
+    border-radius:24px;
+    background:#fff7fb;
+    text-align:left;
+}
+
+.ticket-box h2{
+    margin:0 0 12px;
+    color:var(--hot-pink);
+    text-align:center;
+}
+
+.ticket-box ul{
+    margin:0;
+    padding-left:22px;
+    font-size:17px;
+    line-height:1.75;
+}
+
+.final-note{
+    margin-top:18px;
+    font-size:17px;
+    color:#5d4554;
+    text-align:center;
+}
+
+.float-item{
     position:absolute;
-    color:pink;
-    animation:float 8s linear infinite;
+    bottom:-80px;
+    pointer-events:none;
+    animation:floatUp linear forwards;
+    opacity:.85;
+    z-index:1;
 }
 
-@keyframes float{
-    from{
-        transform:translateY(100vh);
-    }
-    to{
-        transform:translateY(-100px);
-    }
+@keyframes floatUp{
+    0%{ transform:translateY(0) rotate(0deg); opacity:0; }
+    12%{ opacity:.9; }
+    100%{ transform:translateY(-115vh) rotate(360deg); opacity:0; }
 }
 
+.spark{
+    position:absolute;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--pink);
+    pointer-events:none;
+    animation:sparkle .8s ease-out forwards;
+    z-index:20;
+}
+
+@keyframes sparkle{
+    from{ transform:translate(0,0) scale(1); opacity:1; }
+    to{ transform:translate(var(--x),var(--y)) scale(0); opacity:0; }
+}
+
+@media(max-width:640px){
+    .card{
+        padding:24px 18px;
+        border-radius:26px;
+    }
+
+    .top-row{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .choices{
+        grid-template-columns:1fr;
+    }
+
+    button{
+        min-height:54px;
+        font-size:15px;
+    }
+}
 </style>
 </head>
 
 <body>
+<div class="bg-shape one"></div>
+<div class="bg-shape two"></div>
+<div class="bg-shape three"></div>
 
 <div class="container">
+    <div class="card" id="card">
+        <div class="content" id="storyContent">
+            <div class="top-row">
+                <div class="badge" id="badge">Nhiệm vụ: rủ em đi date</div>
+                <div class="progress-wrap">
+                    <div class="progress" id="progress"></div>
+                </div>
+            </div>
 
-<div class="card">
+            <div class="kicker" id="kicker">Mở đầu nhẹ nhàng</div>
+            <h1 id="title">Hi em yêu của anh</h1>
+            <p id="text">Anh có một nhiệm vụ rất nghiêm túc: làm em cười một chút, thấy được quan tâm một chút, rồi rủ em đi chơi một cách thật đàng hoàng.</p>
 
-<h1 id="title">Hi em iuu của anh❤️</h1>
+            <div class="note" id="note">Luật chơi: em chỉ cần chọn theo cảm xúc. Còn phần đáng yêu, anh xin nhận trách nhiệm.</div>
+            <div class="reaction" id="reaction"></div>
 
-<p id="text">
-Anh có một điều muốn nói với em...
-</p>
+            <div class="choices">
+                <button id="btnA" onclick="choose(0)">Em nghe thử xem anh bày trò gì</button>
+                <button id="btnB" class="secondary" onclick="choose(1)">Nói nhanh, em đang tò mò rồi đó</button>
+            </div>
 
-<button onclick="choiceA()">
-👂 Em nghe nè anh iuu
-</button>
+            <div class="meter">
+                <span id="stepCount">Chặng 1/6</span>
+                <span id="careScore">Độ nghiêm túc của anh: 100%</span>
+                <span id="cuteScore">Độ đáng yêu đang sạc pin</span>
+            </div>
+        </div>
 
-<button onclick="choiceB()">
-🙈 Bí mật gì thế ạa?
-</button>
+        <div class="ticket" id="ticket">
+            <h1>Vậy là mình có một buổi hẹn rồi</h1>
+            <p id="ticketIntro">Anh sẽ chuẩn bị một buổi đi chơi nhẹ nhàng, không áp lực, không deadline, chỉ có em được chiều một chút.</p>
 
-</div>
+            <div class="ticket-box">
+                <h2>Phiếu hẹn hò cuối tuần</h2>
+                <ul>
+                    <li><b>Đồ uống:</b> món em thích, hoặc món anh chọn nếu em muốn bất ngờ.</li>
+                    <li><b>Hoạt động:</b> đi dạo, ăn gì ngon, nói chuyện linh tinh, cười vì những chuyện rất nhỏ.</li>
+                    <li><b>Điều khoản chăm sóc:</b> em mệt thì nghỉ, em lạnh thì có áo, em đói thì anh xử lý ngay.</li>
+                    <li><b>Mục tiêu:</b> để em thấy cuối tuần này nhẹ hơn một chút.</li>
+                </ul>
+            </div>
 
+            <p class="final-note" id="finalNote">Anh đón em nhé. Và anh hứa sẽ không biến buổi date thành một buổi họp KPI.</p>
+
+            <div class="choices">
+                <button onclick="finalChoice('menu')">Gợi ý cho anh món em muốn ăn</button>
+                <button class="secondary" onclick="finalChoice('surprise')">Để anh tự chuẩn bị bất ngờ</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
+const CONFIG = {
+    herName: "em yêu",
+    dateTime: "cuối tuần này",
+    yourName: "anh"
+};
 
 let step = 0;
+let carePoint = 100;
+let cutePoint = 0;
+let locked = false;
 
 const pages = [
-
-{
-title:"Anh yêu em, và yêu em rất nhiều đóaaa",
-text:"Vậy là sắp tới sẽ đến ngày kỷ niệm 6 tháng yêu nhau của tụi mình rùi, em thấy háo hức khum nàooo. Anh cũm háo hức lắm lun í"
-},
-
-{
-title:"CFA 📚",
-text:"Anh biết em vừa thực tập vừa học CFA. Có những ngày em cố gắng nhiều hơn những gì mọi người nhìn thấy."
-},
-
-{
-title:"Anh thấy điều đó 🌷",
-text:"Có thể em nghĩ mình chưa đủ tốt. Nhưng anh luôn thấy em là một cô gái rất chăm chỉ, tử tế và đáng ngưỡng mộ."
-},
-
-{
-title:"Một lời nhắc nhỏ 🌙",
-text:"Em không cần phải hoàn hảo mọi lúc đâu. Đôi khi em cũng xứng đáng được nghỉ ngơi một chút."
-},
-
-{
-title:"Và vì thế...",
-text:"Anh muốn mượn em vài tiếng cuối tuần này."
-},
-
-{
-title:"❤️",
-text:"Em có đồng ý đi hẹn hò với anh không?"
-}
-
+    {
+        badge:"Nhiệm vụ: rủ em đi date",
+        kicker:"Mở đầu nhẹ nhàng",
+        title:`Hi ${CONFIG.herName} của ${CONFIG.yourName}`,
+        text:"Anh có một nhiệm vụ rất nghiêm túc: làm em cười một chút, thấy được quan tâm một chút, rồi rủ em đi chơi một cách thật đàng hoàng.",
+        note:"Luật chơi: em chỉ cần chọn theo cảm xúc. Còn phần đáng yêu, anh xin nhận trách nhiệm.",
+        choices:[
+            {
+                label:"Em nghe thử xem anh bày trò gì",
+                reaction:"Rất tốt. Em vừa mở khóa chế độ: anh nói chuyện tử tế nhưng vẫn hơi ngốc nghếch vì thích em quá.",
+                cute:14
+            },
+            {
+                label:"Nói nhanh, em đang tò mò rồi đó",
+                reaction:"Ghi nhận: em tò mò. Anh sẽ tận dụng sự tò mò này một cách có đạo đức và rất đáng yêu.",
+                cute:16
+            }
+        ]
+    },
+    {
+        badge:"Chương 1: Anh để ý em",
+        kicker:"Không phải chỉ nói yêu cho vui",
+        title:"Anh biết dạo này em đã cố gắng rất nhiều",
+        text:"Vừa học, vừa làm, vừa tự đặt kỳ vọng lên bản thân. Có những ngày em mệt nhưng vẫn cố tỏ ra ổn. Anh nhìn thấy điều đó, và anh thương em nhiều hơn vì điều đó.",
+        note:"Anh không giỏi làm mọi thứ biến mất, nhưng anh khá giỏi trong việc ở cạnh em và mua đồ ngon cho em.",
+        choices:[
+            {
+                label:"Ừm, đoạn này nghe cũng ấm lòng đó",
+                reaction:"Anh lưu lại câu này làm bằng chứng: chiến dịch làm em mềm lòng đang có tín hiệu tích cực.",
+                cute:18
+            },
+            {
+                label:"Anh nói tiếp đi, em chưa cảm động đâu nha",
+                reaction:"Thử thách được chấp nhận. Anh chuyển sang chế độ: dịu dàng hơn, kiên nhẫn hơn, và có thể thêm đồ ăn ngon.",
+                cute:20
+            }
+        ]
+    },
+    {
+        badge:"Chương 2: Gói chăm sóc",
+        kicker:"Bản nâng cấp cuối tuần",
+        title:"Anh muốn tặng em vài tiếng không phải gồng mình",
+        text:"Không phải để làm gì quá to tát. Chỉ là một buổi để em được nghỉ, được chọn món mình thích, được nói nhiều hoặc im lặng cũng được, và được anh chăm một cách rất tự nguyện.",
+        note:"Gói này không có phí ẩn, không có điều kiện phụ, chỉ có một người đang rất muốn gặp em.",
+        choices:[
+            {
+                label:"Nghe giống gói premium dành riêng cho em",
+                reaction:"Chính xác. Gói premium trọn đời, thanh toán bằng nụ cười của em, lãi suất bằng một cái ôm.",
+                cute:17
+            },
+            {
+                label:"Nếu có đồ ngon thì em cân nhắc",
+                reaction:"Tín hiệu rất rõ. Anh lập tức đưa đồ ngon vào danh sách hạng mục bắt buộc, không được cắt giảm ngân sách.",
+                cute:19
+            }
+        ]
+    },
+    {
+        badge:"Chương 3: Hợp đồng dễ thương",
+        kicker:"Điều khoản cực kỳ có lợi cho em",
+        title:"Nếu em đồng ý, anh xin cam kết mấy điều nhỏ nhỏ",
+        text:"Anh sẽ không để em phải nghĩ xem đi đâu quá mệt. Anh sẽ hỏi em thích gì, tránh thứ em không thích, và chuẩn bị một buổi vừa đủ vui, vừa đủ nhẹ, vừa đủ để em thấy được thương.",
+        note:"Bên A là anh. Bên B là em. Bên được chiều nhiều hơn chắc chắn là em.",
+        choices:[
+            {
+                label:"Điều khoản nghe cũng hợp lý",
+                reaction:"Tuyệt vời. Anh xin đóng dấu bằng sự nghiêm túc và một chút hồi hộp vì sắp được gặp em.",
+                cute:15
+            },
+            {
+                label:"Có điều khoản được mè nheo không?",
+                reaction:"Có. Điều khoản mè nheo được duyệt tự động. Anh có nghĩa vụ lắng nghe, dỗ dành và cung cấp đồ ăn phù hợp.",
+                cute:22
+            }
+        ]
+    },
+    {
+        badge:"Chương 4: Menu hẹn hò",
+        kicker:"Chọn vibe cho buổi date",
+        title:"Em muốn buổi hẹn của mình có vibe nào?",
+        text:"Anh đang nghĩ đến một buổi nhẹ nhàng: đồ uống ngon, đi dạo một chút, ăn gì đó ấm bụng, rồi để cuối tuần trôi qua theo kiểu rất dễ chịu.",
+        note:"Chọn gì cũng được, vì lựa chọn quan trọng nhất là được đi cùng em.",
+        choices:[
+            {
+                label:"Vibe nhẹ nhàng, chill chill, không vội",
+                reaction:"Đã nhận. Anh sẽ chuẩn bị một buổi date êm như playlist lúc trời mát, có đồ ngon và không có áp lực.",
+                cute:18
+            },
+            {
+                label:"Vibe bất ngờ, nhưng phải đáng yêu",
+                reaction:"Rõ. Anh sẽ giữ bí mật vừa đủ, đáng yêu vừa đủ, và không bất ngờ kiểu làm em muốn quay xe.",
+                cute:21
+            }
+        ]
+    },
+    {
+        badge:"Câu hỏi cuối cùng",
+        kicker:"Đến đoạn quan trọng rồi",
+        title:"Vậy em có đồng ý đi hẹn hò với anh không?",
+        text:`${CONFIG.dateTime}, cho anh mượn em vài tiếng nhé. Không phải vì ngày đó cần đặc biệt, mà vì anh muốn làm nó đặc biệt cùng em.`,
+        note:"Hai lựa chọn dưới đây đều rất hợp lý. Một lựa chọn làm anh vui, lựa chọn còn lại làm anh vui phát điên.",
+        choices:[
+            {
+                label:"Em đồng ý, chốt lịch đi anh",
+                reaction:"Anh chính thức mất bình tĩnh trong sự hạnh phúc. Đang tạo phiếu hẹn hò cho em.",
+                cute:30,
+                accept:true,
+                type:"sweet"
+            },
+            {
+                label:"Em đồng ý nhưng anh phải chiều em đó",
+                reaction:"Được. Điều kiện này anh ký ngay, không cần đọc phụ lục, vì chiều em là chuyên môn của anh.",
+                cute:35,
+                accept:true,
+                type:"pamper"
+            }
+        ]
+    }
 ];
 
-function nextPage(){
+function renderPage(){
+    const page = pages[step];
 
-step++;
+    document.getElementById("badge").innerText = page.badge;
+    document.getElementById("kicker").innerText = page.kicker;
+    document.getElementById("title").innerText = page.title;
+    document.getElementById("text").innerText = page.text;
+    document.getElementById("note").innerText = page.note;
+    document.getElementById("reaction").innerText = "";
+    document.getElementById("reaction").classList.remove("show");
 
-if(step < pages.length){
+    document.getElementById("btnA").innerText = page.choices[0].label;
+    document.getElementById("btnB").innerText = page.choices[1].label;
 
-document.getElementById("title").innerText =
-pages[step].title;
+    document.getElementById("stepCount").innerText = `Chặng ${step + 1}/${pages.length}`;
+    document.getElementById("careScore").innerText = `Độ nghiêm túc của anh: ${carePoint}%`;
+    document.getElementById("cuteScore").innerText = `Độ đáng yêu: ${cutePoint}%`;
 
-document.getElementById("text").innerText =
-pages[step].text;
-
+    const progress = ((step) / (pages.length - 1)) * 100;
+    document.getElementById("progress").style.width = progress + "%";
 }
 
-if(step === pages.length-1){
+function choose(index){
+    if(locked) return;
+    locked = true;
 
-document.querySelector("button").innerHTML =
-"Em đồng ý ❤️";
+    const selected = pages[step].choices[index];
+    cutePoint = Math.min(100, cutePoint + selected.cute);
 
-document.querySelector("button").onclick =
-acceptDate;
+    document.getElementById("btnA").disabled = true;
+    document.getElementById("btnB").disabled = true;
 
+    const reaction = document.getElementById("reaction");
+    reaction.innerText = selected.reaction;
+    reaction.classList.add("show");
+
+    burstHearts(index === 0 ? "pink" : "purple");
+
+    setTimeout(() => {
+        if(selected.accept){
+            showTicket(selected.type);
+            return;
+        }
+
+        step++;
+        document.getElementById("btnA").disabled = false;
+        document.getElementById("btnB").disabled = false;
+        locked = false;
+        renderPage();
+    }, 1150);
 }
 
+function showTicket(type){
+    document.getElementById("storyContent").style.display = "none";
+    document.getElementById("ticket").classList.add("show");
+    document.getElementById("progress").style.width = "100%";
+
+    if(type === "pamper"){
+        document.getElementById("ticketIntro").innerText = "Anh đã nhận điều kiện: buổi hẹn này em là khách VIP, còn anh là người phụ trách chiều chuộng, chăm sóc và làm em cười.";
+        document.getElementById("finalNote").innerText = "Anh đón em nhé. Em chỉ cần xuất hiện xinh xắn và thoải mái, phần còn lại để anh lo.";
+    }
+
+    confettiLove();
 }
 
-function acceptDate(){
-
-document.querySelector(".card").innerHTML =
-
-`
-<h1>Yayyyy ❤️</h1>
-
-<p>
-Cảm ơn em đã đồng ý.
-
-Vậy cuối tuần này anh xin phép được mời em:
-
-☕ Một ly đồ uống thật ngon
-
-🚶 Một cuộc dạo chơi thật nhẹ nhàng
-
-🌙 Và một khoảng thời gian chỉ để em được nghỉ ngơi.
-
-Anh đón em nhé ❤️
-</p>
-`;
-
+function finalChoice(type){
+    const note = document.getElementById("finalNote");
+    if(type === "menu"){
+        note.innerText = "Rồi, em gửi anh món em muốn ăn nha. Anh sẽ biến nó thành lịch trình date tử tế nhất có thể.";
+    }else{
+        note.innerText = "Đã nhận nhiệm vụ bất ngờ. Anh sẽ chuẩn bị kỹ, nhưng vẫn đảm bảo đúng gu của em.";
+    }
+    burstHearts(type === "menu" ? "pink" : "purple");
 }
 
-for(let i=0;i<20;i++){
+function createFloatingItem(){
+    const items = ["❤️","♡","✦","❀","💗"];
+    const el = document.createElement("div");
+    el.className = "float-item";
+    el.innerText = items[Math.floor(Math.random() * items.length)];
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.fontSize = (Math.random() * 18 + 14) + "px";
+    el.style.animationDuration = (Math.random() * 5 + 7) + "s";
+    document.body.appendChild(el);
 
-const heart=document.createElement("div");
-
-heart.classList.add("heart");
-
-heart.innerHTML="❤️";
-
-heart.style.left=Math.random()*100+"vw";
-
-heart.style.fontSize=
-Math.random()*20+15+"px";
-
-heart.style.animationDuration=
-Math.random()*5+5+"s";
-
-document.body.appendChild(heart);
-
+    setTimeout(() => el.remove(), 13000);
 }
 
+function burstHearts(theme){
+    const rect = document.getElementById("card").getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    for(let i = 0; i < 18; i++){
+        const spark = document.createElement("span");
+        spark.className = "spark";
+        spark.style.left = centerX + "px";
+        spark.style.top = centerY + "px";
+        spark.style.background = theme === "purple" ? "#7b61ff" : "#ff4f8b";
+        spark.style.setProperty("--x", (Math.random() * 260 - 130) + "px");
+        spark.style.setProperty("--y", (Math.random() * 220 - 130) + "px");
+        document.body.appendChild(spark);
+        setTimeout(() => spark.remove(), 900);
+    }
+}
+
+function confettiLove(){
+    for(let i = 0; i < 70; i++){
+        setTimeout(() => createFloatingItem(), i * 28);
+    }
+}
+
+setInterval(createFloatingItem, 600);
+renderPage();
 </script>
-
 </body>
 </html>
