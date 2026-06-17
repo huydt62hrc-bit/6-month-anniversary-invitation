@@ -1,1 +1,1680 @@
-<!DOCTYPE html> <html lang="vi"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>Dành cho em yêu</title> <style> :root{ --pink:#ff4f8b; --hot-pink:#ff2f75; --soft-pink:#ffe6f1; --light-pink:#fff4f8; --purple:#7b61ff; --lavender:#eee8ff; --cream:#fffafc; --text:#382b34; --muted:#7c6673; --white:#ffffff; --green:#4bbf73; --yellow:#ffd36d; --shadow:0 24px 90px rgba(255,79,139,.25); } *{ box-sizing:border-box; } html{ min-height:100%; scroll-behavior:smooth; } body{ margin:0; min-height:100vh; font-family:Arial, Helvetica, sans-serif; color:var(--text); display:flex; justify-content:center; align-items:flex-start; text-align:center; overflow-x:hidden; overflow-y:auto; padding:32px 0 70px; background: radial-gradient(circle at 12% 12%, rgba(255,127,177,.28), transparent 28%), radial-gradient(circle at 88% 18%, rgba(123,97,255,.20), transparent 28%), radial-gradient(circle at 45% 92%, rgba(255,211,109,.25), transparent 26%), linear-gradient(135deg,#ffe4ef,#fff8fc 50%,#eef2ff); } body::before{ content:""; position:fixed; inset:0; background-image: linear-gradient(rgba(255,255,255,.34) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.34) 1px, transparent 1px); background-size:44px 44px; opacity:.38; pointer-events:none; z-index:0; } .bg-blob{ position:fixed; border-radius:999px; filter:blur(2px); opacity:.55; pointer-events:none; animation:blobMove 12s ease-in-out infinite alternate; z-index:1; } .bg-blob.one{ width:210px; height:210px; background:#ffd0e2; top:6%; left:5%; } .bg-blob.two{ width:260px; height:260px; background:#e5dcff; right:4%; bottom:5%; animation-delay:1.2s; } .bg-blob.three{ width:150px; height:150px; background:#fff0b8; left:12%; bottom:16%; animation-delay:.4s; } @keyframes blobMove{ from{ transform:translate(0,0) scale(1); } to{ transform:translate(24px,-20px) scale(1.08); } } .app{ position:relative; z-index:5; width:min(94vw,980px); display:grid; grid-template-columns:300px 1fr; gap:22px; align-items:start; } .side-card, .main-card{ background:rgba(255,255,255,.84); border:1px solid rgba(255,255,255,.95); backdrop-filter:blur(16px); border-radius:32px; box-shadow:var(--shadow); overflow:hidden; } .side-card{ padding:24px; text-align:left; position:sticky; top:24px; } .side-card::before, .main-card::before{ content:""; position:absolute; inset:0; background: linear-gradient(120deg, rgba(255,255,255,.52), transparent 38%), radial-gradient(circle at 40% 0%, rgba(255,79,139,.12), transparent 34%); pointer-events:none; } .trip-tag{ position:relative; display:inline-flex; padding:8px 12px; border-radius:999px; background:var(--soft-pink); color:var(--hot-pink); font-weight:800; font-size:13px; margin-bottom:14px; } .side-card h2{ position:relative; margin:0 0 8px; font-size:25px; color:var(--hot-pink); line-height:1.15; } .side-card p{ position:relative; margin:0 0 18px; color:var(--muted); line-height:1.5; font-size:15px; } .info-list{ position:relative; display:grid; gap:11px; } .info-item{ padding:13px 14px; border-radius:18px; background:#fff7fb; border:1px solid #ffe0ec; } .info-item small{ display:block; color:var(--muted); font-size:12px; margin-bottom:4px; } .info-item b{ display:block; color:#44323e; font-size:15px; line-height:1.35; } .love-meter-box{ position:relative; margin-top:18px; padding:15px; border-radius:20px; background:linear-gradient(135deg,#fff4f8,#f4efff); border:1px solid #ffe3ee; } .love-meter-title{ font-size:13px; color:var(--muted); margin-bottom:9px; font-weight:700; } .love-meter-track{ height:10px; background:#f3dce7; border-radius:999px; overflow:hidden; } .love-meter-fill{ width:8%; height:100%; border-radius:999px; background:linear-gradient(90deg,var(--pink),var(--purple)); transition:width .45s ease; } .love-meter-text{ margin-top:8px; font-size:13px; color:#8a3457; font-weight:700; } .main-card{ position:relative; min-height:590px; height:auto; padding:30px; overflow:visible; } .content{ position:relative; z-index:2; height:100%; display:flex; flex-direction:column; } .top-row{ display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:24px; } .badge{ display:inline-flex; align-items:center; justify-content:center; padding:9px 14px; border-radius:999px; background:var(--soft-pink); color:var(--hot-pink); font-size:14px; font-weight:800; white-space:nowrap; } .progress-wrap{ flex:1; height:10px; background:#f4dce8; border-radius:999px; overflow:hidden; } .progress{ width:0%; height:100%; border-radius:999px; background:linear-gradient(90deg,var(--pink),var(--purple)); transition:width .45s ease; } .kicker{ color:var(--purple); font-weight:900; letter-spacing:.05em; text-transform:uppercase; font-size:13px; margin-bottom:11px; } h1{ margin:0 auto 15px; max-width:650px; color:var(--hot-pink); font-size:clamp(31px,4.8vw,49px); line-height:1.08; } .main-text{ margin:0 auto; max-width:670px; font-size:clamp(18px,2.25vw,22px); line-height:1.62; color:#4d3a46; } .note{ min-height:42px; margin:18px auto 0; color:var(--muted); font-size:15px; line-height:1.45; } .reaction{ min-height:52px; margin:16px auto 0; padding:13px 16px; border-radius:18px; background:#fff4f8; color:#8a3457; font-size:16px; line-height:1.45; opacity:0; transform:translateY(8px); transition:all .32s ease; border:1px solid #ffe0ec; max-width:650px; } .reaction.show{ opacity:1; transform:translateY(0); } .choices{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:24px; position:relative; } button{ min-height:62px; padding:14px 18px; border:none; border-radius:999px; background:linear-gradient(135deg,var(--pink),#ff7aaa); color:white; font-size:16px; font-weight:900; cursor:pointer; transition:transform .2s ease, box-shadow .2s ease, filter .2s ease, left .28s ease, top .28s ease; box-shadow:0 13px 28px rgba(255,79,139,.25); line-height:1.25; position:relative; } button.secondary{ background:linear-gradient(135deg,var(--purple),#a391ff); box-shadow:0 13px 28px rgba(123,97,255,.22); } button:hover{ transform:translateY(-3px) scale(1.02); filter:saturate(1.08); } button:active{ transform:translateY(0) scale(.98); } button:disabled{ opacity:.72; cursor:not-allowed; } button.runaway{ z-index:5; } button.runaway.running{ position:relative; animation:wobble .35s ease; } @keyframes wobble{ 0%{ transform:rotate(0deg); } 25%{ transform:rotate(-3deg) scale(1.02); } 50%{ transform:rotate(3deg) scale(1.03); } 75%{ transform:rotate(-2deg) scale(1.02); } 100%{ transform:rotate(0deg); } } .stats{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:auto; padding-top:22px; font-size:13px; color:var(--muted); } .stats span{ padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.70); border:1px solid #ffe0ec; } .secret-box{ margin:18px auto 0; max-width:640px; display:none; grid-template-columns:repeat(3,1fr); gap:10px; } .secret-box.show{ display:grid; animation:pop .35s ease both; } .secret-item{ padding:12px; border-radius:17px; background:#fff7fb; border:1px solid #ffe0ec; font-size:14px; line-height:1.4; color:#5d4554; } .secret-item b{ display:block; color:var(--hot-pink); margin-bottom:4px; } .final-screen{ display:none; position:relative; z-index:2; animation:pop .45s ease both; padding-bottom:28px; } .final-screen.show{ display:block; } .ticket{ max-width:680px; margin:22px auto 0; padding:22px; border:2px dashed #ff9bc0; border-radius:26px; background:#fff7fb; text-align:left; } .ticket h2{ margin:0 0 14px; color:var(--hot-pink); text-align:center; font-size:25px; } .ticket-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; } .ticket-item{ padding:13px; border-radius:18px; background:white; border:1px solid #ffe0ec; } .ticket-item small{ display:block; color:var(--muted); font-size:12px; margin-bottom:4px; } .ticket-item b{ color:#3c2d37; line-height:1.35; } .checklist{ margin:16px 0 0; padding:0; list-style:none; display:grid; gap:10px; } .checklist li{ padding:12px 13px; border-radius:17px; background:white; border:1px solid #ffe0ec; line-height:1.5; } .final-note{ margin:18px auto 0; max-width:620px; text-align:center; color:#5d4554; font-size:17px; line-height:1.55; } .final-reply{ min-height:40px; margin-top:14px; color:#8a3457; font-weight:800; line-height:1.45; } .countdown{ margin:16px auto 0; display:grid; grid-template-columns:repeat(4,1fr); gap:10px; max-width:560px; } .count-box{ padding:12px 8px; border-radius:18px; background:#fff4f8; border:1px solid #ffe0ec; } .count-box b{ display:block; color:var(--hot-pink); font-size:22px; } .count-box small{ color:var(--muted); font-weight:700; font-size:12px; } .float-item{ position:fixed; bottom:-80px; pointer-events:none; animation:floatUp linear forwards; opacity:.82; z-index:1; color:#ff7aaa; text-shadow:0 4px 12px rgba(255,79,139,.18); } @keyframes floatUp{ 0%{ transform:translateY(0) rotate(0deg); opacity:0; } 12%{ opacity:.85; } 100%{ transform:translateY(-115vh) rotate(360deg); opacity:0; } } .spark{ position:fixed; width:8px; height:8px; border-radius:50%; background:var(--pink); pointer-events:none; animation:sparkle .85s ease-out forwards; z-index:50; } @keyframes sparkle{ from{ transform:translate(0,0) scale(1); opacity:1; } to{ transform:translate(var(--x),var(--y)) scale(0); opacity:0; } } .toast{ position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(20px); padding:12px 16px; border-radius:999px; background:#2f2330; color:white; font-weight:800; font-size:14px; opacity:0; pointer-events:none; transition:all .28s ease; z-index:100; box-shadow:0 14px 38px rgba(0,0,0,.18); } .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); } @keyframes pop{ from{ opacity:0; transform:translateY(16px) scale(.98); } to{ opacity:1; transform:translateY(0) scale(1); } } @media(max-width:920px){ body{ overflow-x:hidden; overflow-y:auto; align-items:flex-start; padding:18px 0 70px; } .app{ grid-template-columns:1fr; width:min(94vw,760px); } .side-card{ order:2; position:relative; top:auto; } .main-card{ min-height:auto; } } @media(max-width:640px){ .main-card, .side-card{ border-radius:26px; padding:22px 17px; } .top-row{ flex-direction:column; align-items:stretch; } .choices{ grid-template-columns:1fr; } button{ min-height:56px; font-size:15px; } .secret-box{ grid-template-columns:1fr; } .ticket-grid{ grid-template-columns:1fr; } .countdown{ grid-template-columns:repeat(2,1fr); } } </style> </head> <body> <div class="bg-blob one"></div> <div class="bg-blob two"></div> <div class="bg-blob three"></div> <div class="app"> <aside class="side-card"> <span class="trip-tag">Hồ sơ nhiệm vụ bí mật</span> <h2>Chiến dịch Tam Đảo</h2> <p> Một chuyến đi nhỏ để kỷ niệm 6 tháng tụi mình yêu nhau. Em chỉ cần xuất hiện, còn lại để anh lo. </p> <div class="info-list"> <div class="info-item"> <small>Địa điểm</small> <b>Tam Đảo</b> </div> <div class="info-item"> <small>Thời lượng</small> <b>2 ngày 1 đêm</b> </div> <div class="info-item"> <small>Ngày khởi hành</small> <b>27/6</b> </div> <div class="info-item"> <small>Giờ đón</small> <b>10h sáng ngày 27/6 tại nhà Giang</b> </div> <div class="info-item"> <small>Lý do chính đáng</small> <b>Kỷ niệm 6 tháng tụi mình yêu nhau</b> </div> </div> <div class="love-meter-box"> <div class="love-meter-title">Mức độ sẵn sàng đi date của em</div> <div class="love-meter-track"> <div class="love-meter-fill" id="sideLoveFill"></div> </div> <div class="love-meter-text" id="sideLoveText">Đang khởi động trái tim...</div> </div> </aside> <main class="main-card" id="mainCard"> <section class="content" id="storyContent"> <div class="top-row"> <div class="badge" id="badge">Màn 1: Tin nhắn mở đầu</div> <div class="progress-wrap"> <div class="progress" id="progress"></div> </div> </div> <div class="kicker" id="kicker">Có một lời mời hơi đáng yêu</div> <h1 id="title">Hi em yêu của anh</h1> <p class="main-text" id="text"> Anh có một thông báo vừa nghiêm túc, vừa lãng mạn, vừa hơi nhây. Nội dung chính là: anh muốn rủ em đi date. </p> <div class="note" id="note"> Luật chơi rất đơn giản: mỗi màn có 2 lựa chọn. Em chọn gì anh cũng thương, nhưng có vài nút hơi nghịch nên có thể chạy mất. </div> <div class="reaction" id="reaction"></div> <div class="secret-box" id="secretBox"> <div class="secret-item"> <b>Điểm cộng 1</b> Không cần nghĩ lịch trình. </div> <div class="secret-item"> <b>Điểm cộng 2</b> Không cần gồng mình. </div> <div class="secret-item"> <b>Điểm cộng 3</b> Có người chăm em rất tự nguyện. </div> </div> <div class="choices"> <button id="btnA" onclick="choose(0)">Em nghe thử xem anh định bày trò gì</button> <button id="btnB" class="secondary" onclick="choose(1)">Nói nhanh, em bắt đầu tò mò rồi đó</button> </div> <div class="stats"> <span id="stepCount">Chặng 1/8</span> <span id="loveScore">Độ yêu thương: 12%</span> <span id="mischiefScore">Độ nhây: vừa đủ yêu</span> </div> </section> <section class="final-screen" id="finalScreen"> <div class="badge">Phiếu xác nhận hẹn hò</div> <h1>Chốt đơn Tam Đảo thành công</h1> <p class="main-text"> Cảm ơn em đã đồng ý đi cùng anh trong chuyến date kỷ niệm 6 tháng. Từ giờ đến lúc khởi hành, nhiệm vụ của em chỉ là làm chính em, xinh đẹp như vậy, thoải mái như vậy, và sẵn sàng tận hưởng. </p> <div class="countdown" id="countdown"> <div class="count-box"> <b id="days">--</b> <small>ngày</small> </div> <div class="count-box"> <b id="hours">--</b> <small>giờ</small> </div> <div class="count-box"> <b id="minutes">--</b> <small>phút</small> </div> <div class="count-box"> <b id="seconds">--</b> <small>giây</small> </div> </div> <div class="ticket"> <h2>Lịch trình tình yêu bản rút gọn</h2> <div class="ticket-grid"> <div class="ticket-item"> <small>Đi đâu?</small> <b>Tam Đảo</b> </div> <div class="ticket-item"> <small>Đi bao lâu?</small> <b>2 ngày 1 đêm</b> </div> <div class="ticket-item"> <small>Khi nào?</small> <b>Ngày 27/6</b> </div> <div class="ticket-item"> <small>Anh đón em ở đâu?</small> <b>10h sáng tại nhà Giang</b> </div> </div> <ul class="checklist"> <li> <b>Em cần chuẩn bị:</b> Là chính em, luôn xinh đẹp như vậy, mang theo tâm trạng thoải mái, và một chút háo hức cho chuyến đi. </li> <li> <b>Anh phụ trách:</b> Plan, lịch trình, di chuyển, chỗ đi chơi, đồ ăn, ảnh đẹp, và toàn bộ phần chăm em. </li> <li> <b>Điều khoản đặc biệt:</b> Em mệt thì mình nghỉ. Em đói thì mình ăn. Em lạnh thì anh lo. Em muốn được chiều thì điều khoản này tự động được kích hoạt. </li> <li> <b>Mục tiêu chuyến đi:</b> Không phải đi cho đủ lịch trình, mà là để tụi mình có thêm một kỷ niệm thật mềm, thật vui, thật đáng nhớ sau 6 tháng yêu nhau. </li> </ul> </div> <p class="final-note"> Anh đã chuẩn bị hết rồi. Em chỉ cần đi theo anh và tận hưởng thôi. Còn nếu có điều gì em thích, em chỉ cần nói, anh sẽ tự động cập nhật vào plan. </p> <div class="choices"> <button onclick="finalChoice('sweet')">Em sẵn sàng rồi, anh đón em nha</button> <button class="secondary runaway" id="finalRunaway" onclick="finalChoice('tease')">Em sẽ đi, nhưng anh phải chiều em nhiều hơn nữa</button> </div> <div class="final-reply" id="finalReply"></div> </section> </main> </div> <div class="toast" id="toast">Đố ấn được tui</div> <script> const CONFIG = { herName: "em yêu", tripPlace: "Tam Đảo", duration: "2 ngày 1 đêm", dateText: "27/6", pickupTime: "10h sáng", pickupPlace: "nhà Giang", anniversary: "6 tháng", targetDate: "2026-06-27T10:00:00+07:00" }; let step = 0; let lovePoint = 12; let locked = false; let dodgeCount = 0; let finalDodgeCount = 0; const pages = [ { badge:"Màn 1: Tin nhắn mở đầu", kicker:"Có một lời mời hơi đáng yêu", title:"Hi em yêu của anh", text:"Anh có một thông báo vừa nghiêm túc, vừa lãng mạn, vừa hơi nhây. Nội dung chính là: anh muốn rủ em đi date.", note:"Luật chơi rất đơn giản: mỗi màn có 2 lựa chọn. Em chọn gì anh cũng thương, nhưng có vài nút hơi nghịch nên có thể chạy mất.", secret:false, choices:[ { label:"Em nghe thử xem anh định bày trò gì", reaction:"Rất tốt. Em vừa mở khóa chế độ: anh nói chuyện tử tế, hồi hộp, và hơi đáng yêu quá mức cho phép.", love:11 }, { label:"Nói nhanh, em bắt đầu tò mò rồi đó", reaction:"Tín hiệu tò mò đã được ghi nhận. Anh xin phép dùng nó để dẫn em vào một chiếc bẫy tình yêu rất hợp pháp.", love:13 } ] }, { badge:"Màn 2: Lý do chính đáng", kicker:"Không phải tự nhiên mà anh nghiêm túc vậy", title:"Sắp tới là kỷ niệm 6 tháng tụi mình yêu nhau", text:"6 tháng không quá dài so với cả một đời, nhưng đủ dài để anh biết rằng anh muốn tiếp tục có thật nhiều kỷ niệm đẹp với em.", note:"Và vì kỷ niệm này xứng đáng được chăm chút, anh đã âm thầm chuẩn bị một chuyến đi nhỏ.", secret:false, choices:[ { label:"Nghe cũng cảm động đó, nói tiếp đi", reaction:"Anh chính thức nhận được 1 điểm cảm động. Chưa đủ để lên mây, nhưng đủ để anh cười hơi ngốc.", love:12 }, { label:"6 tháng mà anh bày vẽ dữ vậy hả?", reaction:"Đúng rồi. Vì là em nên anh thấy bày vẽ một chút cũng đáng. Thậm chí bày vẽ thêm nữa vẫn đáng.", love:15 } ] }, { badge:"Màn 3: Tiết lộ địa điểm", kicker:"Mở phong bì bí mật", title:"Điểm đến là Tam Đảo", text:"Một nơi có không khí mát hơn, nhịp sống chậm hơn, và rất hợp để tụi mình trốn deadline, trốn ồn ào, trốn cả những ngày mệt mỏi.", note:"Chuyến đi này không phải để chạy theo lịch trình dày đặc. Nó là để em được nghỉ, được vui, và được anh chăm.", secret:true, choices:[ { label:"Tam Đảo nghe cũng xinh đó nha", reaction:"Anh biết mà. Một nơi xinh xinh, đi cùng một người rất xinh, tự nhiên thành chuyến đi quá hợp lý.", love:14 }, { label:"Có lạnh không, có cần anh chăm không?", reaction:"Câu hỏi này quá hay. Câu trả lời là: có lạnh hay không chưa biết, nhưng anh chăm em là chắc chắn.", love:17 } ] }, { badge:"Màn 4: Thông tin chuyến đi", kicker:"Lịch trình đã được anh cài đặt sẵn", title:"Chuyến đi 2 ngày 1 đêm, bắt đầu ngày 27/6", text:"10h sáng ngày 27/6, anh sẽ đón em tại nhà Giang. Từ khoảnh khắc đó, em chính thức bước vào chế độ: không cần lo, không cần nghĩ, chỉ cần tận hưởng.", note:"Anh không dám hứa mọi thứ hoàn hảo 100%, nhưng anh hứa đã chuẩn bị bằng rất nhiều sự để ý và thương em.", secret:true, choices:[ { label:"Em chỉ việc đi theo và tận hưởng thôi hả?", reaction:"Đúng vậy. Đây là tour riêng 1 khách VIP, hướng dẫn viên là anh, tiêu chuẩn phục vụ là thương em hết mức.", love:16 }, { label:"Nút này hơi nghi, để em ấn thử", reaction:"Em đã ấn vào nút nghi ngờ. Kết quả kiểm tra: anh thật lòng, plan thật sự đã chuẩn bị, và em thật sự chỉ cần xinh.", love:18, dodge:true } ] }, { badge:"Màn 5: Checklist của em", kicker:"Danh sách chuẩn bị siêu ngắn", title:"Em không cần chuẩn bị quá nhiều đâu", text:"Em chỉ cần là chính em, luôn xinh đẹp như vậy, mặc gì em thấy thoải mái, mang theo một chút háo hức, và để phần còn lại cho anh.", note:"Nếu em quên gì cũng không sao. Chỉ cần đừng quên đi cùng anh là được.", secret:false, choices:[ { label:"Nhiệm vụ này nghe dễ thương quá", reaction:"Dễ thương là đúng rồi. Anh đã tối ưu checklist để em không phải stress, vì em xứng đáng được nhẹ đầu một chút.", love:14 }, { label:"Nhỡ em chỉ mang theo mỗi bản thân thì sao?", reaction:"Thì quá đủ. Vì trong plan của anh, phần quan trọng nhất luôn là có em ở đó.", love:19 } ] }, { badge:"Màn 6: Điều khoản chăm sóc", kicker:"Hợp đồng yêu thương không có chữ nhỏ", title:"Anh đã chuẩn bị plan rồi", text:"Nhưng plan này không phải kiểu ép em phải đi hết chỗ này chỗ kia. Plan này có thể linh hoạt theo tâm trạng của em, vì điều anh muốn nhất là em thấy vui và thoải mái.", note:"Em muốn đi chậm thì mình đi chậm. Em muốn ăn thì mình ăn. Em muốn ngồi yên một chút cũng được.", secret:true, choices:[ { label:"Điều khoản này nghe có lợi cho em", reaction:"Chính xác. Đây là bản hợp đồng mà bên được chiều nhiều hơn là em, còn bên tự nguyện chiều là anh.", love:15 }, { label:"Có điều khoản được mè nheo không?", reaction:"Có. Điều khoản mè nheo được duyệt tự động. Không cần trình ký, không cần chờ phê duyệt.", love:21 } ] }, { badge:"Màn 7: Nút nhây xuất hiện", kicker:"Cảnh báo: nút này biết chạy", title:"Nhưng trước khi đồng ý, em phải vượt qua một thử thách nhỏ", text:"Có một nút đang rất muốn được em ấn, nhưng nó hơi nhát. Nó sẽ chạy một chút cho em cười, rồi mới chịu ngoan.", note:"Nếu nút chạy mất thì không phải lỗi của em. Đó là lỗi của anh vì thích trêu em.", secret:false, choices:[ { label:"Em chọn phương án dịu dàng: đồng ý nghe tiếp", reaction:"Phương án dịu dàng được chấp nhận. Anh thấy tim mình được xoa đầu một cái.", love:15 }, { label:"Đố ấn được tui", reaction:"Cuối cùng cũng bắt được nút nghịch rồi. Nút này xác nhận: em rất kiên nhẫn, còn anh rất thích trêu em.", love:24, dodge:true } ] }, { badge:"Màn 8: Câu hỏi chính thức", kicker:"Đến đoạn quan trọng rồi", title:"Em có đồng ý đi Tam Đảo với anh không?", text:"Ngày 27/6 này, cho anh đón em lúc 10h sáng tại nhà Giang nhé. Mình đi 2 ngày 1 đêm, kỷ niệm 6 tháng yêu nhau, và để anh được chăm em trong một chuyến đi thật đáng nhớ.", note:"Hai lựa chọn dưới đây đều hợp lệ. Một lựa chọn làm anh vui, lựa chọn còn lại làm anh vui hơn nữa.", secret:false, choices:[ { label:"Em đồng ý, mình đi Tam Đảo thôi", reaction:"Anh vừa nhận được câu trả lời đẹp nhất trong ngày. Đang tạo phiếu xác nhận hẹn hò cho em.", love:30, accept:true, finalType:"sweet" }, { label:"Em đồng ý nhưng anh phải chiều em đó", reaction:"Điều kiện được duyệt ngay. Anh ký bằng cả trái tim, không cần đọc phụ lục.", love:35, accept:true, finalType:"pamper" } ] } ]; function renderPage(){ const page = pages[step]; document.getElementById("badge").innerText = page.badge; document.getElementById("kicker").innerText = page.kicker; document.getElementById("title").innerText = page.title; document.getElementById("text").innerText = page.text; document.getElementById("note").innerText = page.note; const reaction = document.getElementById("reaction"); reaction.innerText = ""; reaction.classList.remove("show"); const secretBox = document.getElementById("secretBox"); if(page.secret){ secretBox.classList.add("show"); }else{ secretBox.classList.remove("show"); } const btnA = document.getElementById("btnA"); const btnB = document.getElementById("btnB"); btnA.innerText = page.choices[0].label; btnB.innerText = page.choices[1].label; btnA.disabled = false; btnB.disabled = false; btnB.style.left = "0px"; btnB.style.top = "0px"; btnB.classList.remove("runaway","running"); if(page.choices[1].dodge){ btnB.classList.add("runaway"); } document.getElementById("stepCount").innerText = `Chặng ${step + 1}/${pages.length}`; document.getElementById("loveScore").innerText = `Độ yêu thương: ${lovePoint}%`; document.getElementById("mischiefScore").innerText = step >= 6 ? "Độ nhây: đã bật chế độ trêu em" : "Độ nhây: vừa đủ yêu"; const progress = (step / (pages.length - 1)) * 100; document.getElementById("progress").style.width = progress + "%"; updateSideLove(); window.scrollTo({top:0, behavior:"smooth"}); } function choose(index){ if(locked) return; const page = pages[step]; const selected = page.choices[index]; if(selected.dodge && shouldDodge()){ dodgeButton(document.getElementById("btnB")); return; } locked = true; lovePoint = Math.min(100, lovePoint + selected.love); updateSideLove(); document.getElementById("btnA").disabled = true; document.getElementById("btnB").disabled = true; const reaction = document.getElementById("reaction"); reaction.innerText = selected.reaction; reaction.classList.add("show"); burstSparkles(index === 0 ? "pink" : "purple"); setTimeout(() => { if(selected.accept){ showFinal(selected.finalType); return; } step++; locked = false; renderPage(); }, 1250); } function shouldDodge(){ if(dodgeCount < 2){ dodgeCount++; return true; } dodgeCount = 0; return false; } function dodgeButton(btn){ const x = Math.random() * 140 - 70; const y = Math.random() * 90 - 45; btn.style.left = x + "px"; btn.style.top = y + "px"; btn.classList.add("running"); const lines = [ "Đố ấn được tui", "Suýt bắt được rồi", "Nút này hơi ngại", "Chạy chút cho em cười thôi", "Ấn thêm lần nữa xem nào" ]; showToast(lines[Math.floor(Math.random() * lines.length)]); burstSparkles("purple"); setTimeout(() => { btn.classList.remove("running"); }, 360); } function showFinal(type){ document.getElementById("storyContent").style.display = "none"; document.getElementById("finalScreen").classList.add("show"); document.getElementById("progress").style.width = "100%"; if(type === "pamper"){ document.querySelector(".final-note").innerText = "Điều kiện chiều em đã được thêm vào plan. Thật ra chưa cần thêm, vì nó nằm sẵn trong plan từ đầu rồi."; } lovePoint = 100; updateSideLove(); confettiLove(); startCountdown(); setTimeout(() => { window.scrollTo({top:0, behavior:"smooth"}); }, 100); } function finalChoice(type){ const reply = document.getElementById("finalReply"); if(type === "tease" && finalDodgeCount < 1){ finalDodgeCount++; dodgeButton(document.getElementById("finalRunaway")); return; } if(type === "sweet"){ reply.innerText = "Anh sẽ đón em đúng 10h sáng ngày 27/6 tại nhà Giang. Em chỉ cần xinh đẹp và vui vẻ, còn lại để anh lo."; }else{ reply.innerText = "Đã ghi nhận: chiều em nhiều hơn nữa. Điều khoản này được kích hoạt trong toàn bộ chuyến Tam Đảo."; } burstSparkles(type === "sweet" ? "pink" : "purple"); confettiLove(); setTimeout(() => { reply.scrollIntoView({behavior:"smooth", block:"center"}); }, 100); } function updateSideLove(){ const fill = document.getElementById("sideLoveFill"); const text = document.getElementById("sideLoveText"); fill.style.width = lovePoint + "%"; if(lovePoint < 35){ text.innerText = "Đang khởi động trái tim..."; }else if(lovePoint < 65){ text.innerText = "Có vẻ em bắt đầu mềm lòng rồi."; }else if(lovePoint < 95){ text.innerText = "Rất gần Tam Đảo rồi đó."; }else{ text.innerText = "Sẵn sàng đi date với anh."; } } function showToast(message){ const toast = document.getElementById("toast"); toast.innerText = message; toast.classList.add("show"); clearTimeout(window.toastTimer); window.toastTimer = setTimeout(() => { toast.classList.remove("show"); }, 1000); } function burstSparkles(theme){ const card = document.getElementById("mainCard"); const rect = card.getBoundingClientRect(); const centerX = rect.left + rect.width / 2; const centerY = rect.top + rect.height / 2; for(let i = 0; i < 20; i++){ const spark = document.createElement("span"); spark.className = "spark"; spark.style.left = centerX + "px"; spark.style.top = centerY + "px"; spark.style.background = theme === "purple" ? "#7b61ff" : "#ff4f8b"; spark.style.setProperty("--x", (Math.random() * 280 - 140) + "px"); spark.style.setProperty("--y", (Math.random() * 230 - 140) + "px"); document.body.appendChild(spark); setTimeout(() => { spark.remove(); }, 900); } } function createFloatingItem(){ const items = ["♥","♡","✦","❀","●"]; const item = document.createElement("div"); item.className = "float-item"; item.innerText = items[Math.floor(Math.random() * items.length)]; item.style.left = Math.random() * 100 + "vw"; item.style.fontSize = (Math.random() * 20 + 15) + "px"; item.style.animationDuration = (Math.random() * 5 + 7) + "s"; document.body.appendChild(item); setTimeout(() => { item.remove(); }, 13000); } function confettiLove(){ for(let i = 0; i < 80; i++){ setTimeout(() => { createFloatingItem(); }, i * 24); } } function startCountdown(){ const target = new Date(CONFIG.targetDate).getTime(); function update(){ const now = new Date().getTime(); let distance = target - now; if(distance < 0){ document.getElementById("days").innerText = "00"; document.getElementById("hours").innerText = "00"; document.getElementById("minutes").innerText = "00"; document.getElementById("seconds").innerText = "00"; return; } const days = Math.floor(distance / (1000 * 60 * 60 * 24)); distance %= (1000 * 60 * 60 * 24); const hours = Math.floor(distance / (1000 * 60 * 60)); distance %= (1000 * 60 * 60); const minutes = Math.floor(distance / (1000 * 60)); distance %= (1000 * 60); const seconds = Math.floor(distance / 1000); document.getElementById("days").innerText = String(days).padStart(2,"0"); document.getElementById("hours").innerText = String(hours).padStart(2,"0"); document.getElementById("minutes").innerText = String(minutes).padStart(2,"0"); document.getElementById("seconds").innerText = String(seconds).padStart(2,"0"); } update(); if(!window.countdownTimer){ window.countdownTimer = setInterval(update, 1000); } } document.getElementById("btnB").addEventListener("mouseenter", function(){ const page = pages[step]; if(page && page.choices[1].dodge && !locked && dodgeCount < 2){ dodgeButton(this); dodgeCount++; } }); document.getElementById("btnB").addEventListener("touchstart", function(e){ const page = pages[step]; if(page && page.choices[1].dodge && !locked && dodgeCount < 2){ e.preventDefault(); dodgeButton(this); dodgeCount++; } }, {passive:false}); document.getElementById("finalRunaway").addEventListener("mouseenter", function(){ if(finalDodgeCount < 1){ finalDodgeCount++; dodgeButton(this); } }); document.getElementById("finalRunaway").addEventListener("touchstart", function(e){ if(finalDodgeCount < 1){ e.preventDefault(); finalDodgeCount++; dodgeButton(this); } }, {passive:false}); setInterval(createFloatingItem, 650); renderPage(); </script> </body> </html> ```
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dành cho em yêu</title>
+
+  <style>
+    :root {
+      --pink: #ff4f8b;
+      --hot-pink: #ff2f75;
+      --soft-pink: #ffe6f1;
+      --light-pink: #fff4f8;
+      --purple: #7b61ff;
+      --lavender: #eee8ff;
+      --cream: #fffafc;
+      --text: #382b34;
+      --muted: #7c6673;
+      --white: #ffffff;
+      --green: #4bbf73;
+      --yellow: #ffd36d;
+      --shadow: 0 24px 90px rgba(255, 79, 139, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      text-align: center;
+      overflow-x: hidden;
+      overflow-y: auto;
+      padding: 32px 0 70px;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(255, 127, 177, 0.28), transparent 28%),
+        radial-gradient(circle at 88% 18%, rgba(123, 97, 255, 0.20), transparent 28%),
+        radial-gradient(circle at 45% 92%, rgba(255, 211, 109, 0.25), transparent 26%),
+        linear-gradient(135deg, #ffe4ef, #fff8fc 50%, #eef2ff);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.34) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.34) 1px, transparent 1px);
+      background-size: 44px 44px;
+      opacity: 0.38;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bg-blob {
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(2px);
+      opacity: 0.55;
+      pointer-events: none;
+      animation: blobMove 12s ease-in-out infinite alternate;
+      z-index: 1;
+    }
+
+    .bg-blob.one {
+      width: 210px;
+      height: 210px;
+      background: #ffd0e2;
+      top: 6%;
+      left: 5%;
+    }
+
+    .bg-blob.two {
+      width: 260px;
+      height: 260px;
+      background: #e5dcff;
+      right: 4%;
+      bottom: 5%;
+      animation-delay: 1.2s;
+    }
+
+    .bg-blob.three {
+      width: 150px;
+      height: 150px;
+      background: #fff0b8;
+      left: 12%;
+      bottom: 16%;
+      animation-delay: 0.4s;
+    }
+
+    @keyframes blobMove {
+      from {
+        transform: translate(0, 0) scale(1);
+      }
+
+      to {
+        transform: translate(24px, -20px) scale(1.08);
+      }
+    }
+
+    .app {
+      position: relative;
+      z-index: 5;
+      width: min(94vw, 980px);
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .side-card,
+    .main-card {
+      background: rgba(255, 255, 255, 0.84);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(16px);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .side-card {
+      position: sticky;
+      top: 24px;
+      padding: 24px;
+      text-align: left;
+    }
+
+    .side-card::before,
+    .main-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.52), transparent 38%),
+        radial-gradient(circle at 40% 0%, rgba(255, 79, 139, 0.12), transparent 34%);
+      pointer-events: none;
+    }
+
+    .trip-tag {
+      position: relative;
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--soft-pink);
+      color: var(--hot-pink);
+      font-weight: 800;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    .side-card h2 {
+      position: relative;
+      margin: 0 0 8px;
+      font-size: 25px;
+      color: var(--hot-pink);
+      line-height: 1.15;
+    }
+
+    .side-card p {
+      position: relative;
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 15px;
+    }
+
+    .info-list {
+      position: relative;
+      display: grid;
+      gap: 11px;
+    }
+
+    .info-item {
+      padding: 13px 14px;
+      border-radius: 18px;
+      background: #fff7fb;
+      border: 1px solid #ffe0ec;
+    }
+
+    .info-item small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .info-item b {
+      display: block;
+      color: #44323e;
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    .love-meter-box {
+      position: relative;
+      margin-top: 18px;
+      padding: 15px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #fff4f8, #f4efff);
+      border: 1px solid #ffe3ee;
+    }
+
+    .love-meter-title {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 9px;
+      font-weight: 700;
+    }
+
+    .love-meter-track {
+      height: 10px;
+      background: #f3dce7;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .love-meter-fill {
+      width: 8%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--pink), var(--purple));
+      transition: width 0.45s ease;
+    }
+
+    .love-meter-text {
+      margin-top: 8px;
+      font-size: 13px;
+      color: #8a3457;
+      font-weight: 700;
+    }
+
+    .main-card {
+      position: relative;
+      min-height: 590px;
+      height: auto;
+      padding: 30px;
+      overflow: visible;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: var(--soft-pink);
+      color: var(--hot-pink);
+      font-size: 14px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .progress-wrap {
+      flex: 1;
+      height: 10px;
+      background: #f4dce8;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress {
+      width: 0%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--pink), var(--purple));
+      transition: width 0.45s ease;
+    }
+
+    .kicker {
+      color: var(--purple);
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 11px;
+    }
+
+    h1 {
+      margin: 0 auto 15px;
+      max-width: 650px;
+      color: var(--hot-pink);
+      font-size: clamp(31px, 4.8vw, 49px);
+      line-height: 1.08;
+    }
+
+    .main-text {
+      margin: 0 auto;
+      max-width: 670px;
+      font-size: clamp(18px, 2.25vw, 22px);
+      line-height: 1.62;
+      color: #4d3a46;
+    }
+
+    .note {
+      min-height: 42px;
+      margin: 18px auto 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .reaction {
+      min-height: 52px;
+      margin: 16px auto 0;
+      padding: 13px 16px;
+      border-radius: 18px;
+      background: #fff4f8;
+      color: #8a3457;
+      font-size: 16px;
+      line-height: 1.45;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.32s ease;
+      border: 1px solid #ffe0ec;
+      max-width: 650px;
+    }
+
+    .reaction.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 24px;
+      position: relative;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .choices.answered {
+      opacity: 0.55;
+      transform: scale(0.99);
+    }
+
+    button {
+      min-height: 62px;
+      padding: 14px 18px;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--pink), #ff7aaa);
+      color: white;
+      font-size: 16px;
+      font-weight: 900;
+      cursor: pointer;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        filter 0.2s ease,
+        left 0.28s ease,
+        top 0.28s ease;
+      box-shadow: 0 13px 28px rgba(255, 79, 139, 0.25);
+      line-height: 1.25;
+      position: relative;
+    }
+
+    button.secondary {
+      background: linear-gradient(135deg, var(--purple), #a391ff);
+      box-shadow: 0 13px 28px rgba(123, 97, 255, 0.22);
+    }
+
+    button:hover {
+      transform: translateY(-3px) scale(1.02);
+      filter: saturate(1.08);
+    }
+
+    button:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    button:disabled {
+      opacity: 0.72;
+      cursor: not-allowed;
+    }
+
+    button.runaway {
+      z-index: 5;
+    }
+
+    button.runaway.running {
+      position: relative;
+      animation: wobble 0.35s ease;
+    }
+
+    @keyframes wobble {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      25% {
+        transform: rotate(-3deg) scale(1.02);
+      }
+
+      50% {
+        transform: rotate(3deg) scale(1.03);
+      }
+
+      75% {
+        transform: rotate(-2deg) scale(1.02);
+      }
+
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+
+    .continue-wrap {
+      display: none;
+      margin: 22px auto 0;
+      max-width: 520px;
+      text-align: center;
+      animation: pop 0.38s ease both;
+    }
+
+    .continue-wrap.show {
+      display: block;
+    }
+
+    .continue-hint {
+      margin-bottom: 10px;
+      color: #9a4a6b;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .continue-btn {
+      width: 100%;
+      min-height: 68px;
+      padding: 16px 54px;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      background:
+        linear-gradient(135deg, #ff4f8b, #ff8ab3 45%, #a391ff),
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.60), transparent 25%);
+      box-shadow:
+        0 18px 44px rgba(255, 79, 139, 0.32),
+        inset 0 1px 0 rgba(255, 255, 255, 0.45);
+      overflow: hidden;
+      isolation: isolate;
+      animation: softPulse 1.7s ease-in-out infinite;
+    }
+
+    .continue-btn::before,
+    .continue-btn::after {
+      content: "♥";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.92);
+      text-shadow: 0 4px 14px rgba(255, 255, 255, 0.25);
+      z-index: 2;
+    }
+
+    .continue-btn::before {
+      left: 24px;
+      animation: miniHeartLeft 1.4s ease-in-out infinite;
+    }
+
+    .continue-btn::after {
+      right: 24px;
+      animation: miniHeartRight 1.4s ease-in-out infinite;
+    }
+
+    .continue-btn span {
+      position: relative;
+      z-index: 2;
+    }
+
+    .continue-btn .shine {
+      position: absolute;
+      inset: -60% auto -60% -35%;
+      width: 36%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+      transform: rotate(20deg);
+      animation: romanticShine 2.8s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    @keyframes softPulse {
+      0%,
+      100% {
+        transform: translateY(0) scale(1);
+        box-shadow:
+          0 18px 44px rgba(255, 79, 139, 0.30),
+          inset 0 1px 0 rgba(255, 255, 255, 0.45);
+      }
+
+      50% {
+        transform: translateY(-2px) scale(1.01);
+        box-shadow:
+          0 22px 52px rgba(255, 79, 139, 0.38),
+          inset 0 1px 0 rgba(255, 255, 255, 0.55);
+      }
+    }
+
+    @keyframes romanticShine {
+      0% {
+        left: -45%;
+      }
+
+      55% {
+        left: 120%;
+      }
+
+      100% {
+        left: 120%;
+      }
+    }
+
+    @keyframes miniHeartLeft {
+      0%,
+      100% {
+        transform: translateY(-50%) scale(1) rotate(-8deg);
+      }
+
+      50% {
+        transform: translateY(-58%) scale(1.15) rotate(6deg);
+      }
+    }
+
+    @keyframes miniHeartRight {
+      0%,
+      100% {
+        transform: translateY(-50%) scale(1) rotate(8deg);
+      }
+
+      50% {
+        transform: translateY(-58%) scale(1.15) rotate(-6deg);
+      }
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: auto;
+      padding-top: 22px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .stats span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.70);
+      border: 1px solid #ffe0ec;
+    }
+
+    .secret-box {
+      margin: 18px auto 0;
+      max-width: 640px;
+      display: none;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .secret-box.show {
+      display: grid;
+      animation: pop 0.35s ease both;
+    }
+
+    .secret-item {
+      padding: 12px;
+      border-radius: 17px;
+      background: #fff7fb;
+      border: 1px solid #ffe0ec;
+      font-size: 14px;
+      line-height: 1.4;
+      color: #5d4554;
+    }
+
+    .secret-item b {
+      display: block;
+      color: var(--hot-pink);
+      margin-bottom: 4px;
+    }
+
+    .final-screen {
+      display: none;
+      position: relative;
+      z-index: 2;
+      animation: pop 0.45s ease both;
+      padding-bottom: 28px;
+    }
+
+    .final-screen.show {
+      display: block;
+    }
+
+    .ticket {
+      max-width: 680px;
+      margin: 22px auto 0;
+      padding: 22px;
+      border: 2px dashed #ff9bc0;
+      border-radius: 26px;
+      background: #fff7fb;
+      text-align: left;
+    }
+
+    .ticket h2 {
+      margin: 0 0 14px;
+      color: var(--hot-pink);
+      text-align: center;
+      font-size: 25px;
+    }
+
+    .ticket-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .ticket-item {
+      padding: 13px;
+      border-radius: 18px;
+      background: white;
+      border: 1px solid #ffe0ec;
+    }
+
+    .ticket-item small {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .ticket-item b {
+      color: #3c2d37;
+      line-height: 1.35;
+    }
+
+    .checklist {
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .checklist li {
+      padding: 12px 13px;
+      border-radius: 17px;
+      background: white;
+      border: 1px solid #ffe0ec;
+      line-height: 1.5;
+    }
+
+    .final-note {
+      margin: 18px auto 0;
+      max-width: 620px;
+      text-align: center;
+      color: #5d4554;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .final-reply {
+      min-height: 40px;
+      margin-top: 14px;
+      color: #8a3457;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .countdown {
+      margin: 16px auto 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      max-width: 560px;
+    }
+
+    .count-box {
+      padding: 12px 8px;
+      border-radius: 18px;
+      background: #fff4f8;
+      border: 1px solid #ffe0ec;
+    }
+
+    .count-box b {
+      display: block;
+      color: var(--hot-pink);
+      font-size: 22px;
+    }
+
+    .count-box small {
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .float-item {
+      position: fixed;
+      bottom: -80px;
+      pointer-events: none;
+      animation: floatUp linear forwards;
+      opacity: 0.82;
+      z-index: 1;
+      color: #ff7aaa;
+      text-shadow: 0 4px 12px rgba(255, 79, 139, 0.18);
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      12% {
+        opacity: 0.85;
+      }
+
+      100% {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .spark {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--pink);
+      pointer-events: none;
+      animation: sparkle 0.85s ease-out forwards;
+      z-index: 50;
+    }
+
+    @keyframes sparkle {
+      from {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+      }
+
+      to {
+        transform: translate(var(--x), var(--y)) scale(0);
+        opacity: 0;
+      }
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%) translateY(20px);
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: #2f2330;
+      color: white;
+      font-weight: 800;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.28s ease;
+      z-index: 100;
+      box-shadow: 0 14px 38px rgba(0, 0, 0, 0.18);
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @keyframes pop {
+      from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @media (max-width: 920px) {
+      body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        align-items: flex-start;
+        padding: 18px 0 70px;
+      }
+
+      .app {
+        grid-template-columns: 1fr;
+        width: min(94vw, 760px);
+      }
+
+      .side-card {
+        order: 2;
+        position: relative;
+        top: auto;
+      }
+
+      .main-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .main-card,
+      .side-card {
+        border-radius: 26px;
+        padding: 22px 17px;
+      }
+
+      .top-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .choices {
+        grid-template-columns: 1fr;
+      }
+
+      button {
+        min-height: 56px;
+        font-size: 15px;
+      }
+
+      .continue-btn {
+        min-height: 62px;
+        padding-left: 44px;
+        padding-right: 44px;
+      }
+
+      .continue-btn::before {
+        left: 18px;
+      }
+
+      .continue-btn::after {
+        right: 18px;
+      }
+
+      .secret-box {
+        grid-template-columns: 1fr;
+      }
+
+      .ticket-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .countdown {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-blob one"></div>
+  <div class="bg-blob two"></div>
+  <div class="bg-blob three"></div>
+
+  <div class="app">
+    <aside class="side-card">
+      <span class="trip-tag">Hồ sơ nhiệm vụ bí mật</span>
+
+      <h2>Chiến dịch Tam Đảo</h2>
+
+      <p>
+        Một chuyến đi nhỏ để kỷ niệm 6 tháng tụi mình yêu nhau.
+        Em chỉ cần xuất hiện, còn lại để anh lo.
+      </p>
+
+      <div class="info-list">
+        <div class="info-item">
+          <small>Địa điểm</small>
+          <b>Tam Đảo</b>
+        </div>
+
+        <div class="info-item">
+          <small>Thời lượng</small>
+          <b>2 ngày 1 đêm</b>
+        </div>
+
+        <div class="info-item">
+          <small>Ngày khởi hành</small>
+          <b>27/6</b>
+        </div>
+
+        <div class="info-item">
+          <small>Giờ đón</small>
+          <b>10h sáng ngày 27/6 tại nhà Giang</b>
+        </div>
+
+        <div class="info-item">
+          <small>Lý do chính đáng</small>
+          <b>Kỷ niệm 6 tháng tụi mình yêu nhau</b>
+        </div>
+      </div>
+
+      <div class="love-meter-box">
+        <div class="love-meter-title">Mức độ sẵn sàng đi date của em</div>
+
+        <div class="love-meter-track">
+          <div class="love-meter-fill" id="sideLoveFill"></div>
+        </div>
+
+        <div class="love-meter-text" id="sideLoveText">Đang khởi động trái tim...</div>
+      </div>
+    </aside>
+
+    <main class="main-card" id="mainCard">
+      <section class="content" id="storyContent">
+        <div class="top-row">
+          <div class="badge" id="badge">Màn 1: Tin nhắn mở đầu</div>
+
+          <div class="progress-wrap">
+            <div class="progress" id="progress"></div>
+          </div>
+        </div>
+
+        <div class="kicker" id="kicker">Có một lời mời hơi đáng yêu</div>
+
+        <h1 id="title">Hi em yêu của anh</h1>
+
+        <p class="main-text" id="text">
+          Anh có một thông báo vừa nghiêm túc, vừa lãng mạn, vừa hơi nhây.
+          Nội dung chính là: anh muốn rủ em đi date.
+        </p>
+
+        <div class="note" id="note">
+          Luật chơi rất đơn giản: mỗi màn có 2 lựa chọn.
+          Em chọn gì anh cũng thương, nhưng có vài nút hơi nghịch nên có thể chạy mất.
+        </div>
+
+        <div class="reaction" id="reaction" aria-live="polite"></div>
+
+        <div class="secret-box" id="secretBox">
+          <div class="secret-item">
+            <b>Điểm cộng 1</b>
+            Không cần nghĩ lịch trình.
+          </div>
+
+          <div class="secret-item">
+            <b>Điểm cộng 2</b>
+            Không cần gồng mình.
+          </div>
+
+          <div class="secret-item">
+            <b>Điểm cộng 3</b>
+            Có người chăm em rất tự nguyện.
+          </div>
+        </div>
+
+        <div class="choices" id="choiceBox">
+          <button id="btnA" onclick="choose(0)">Em nghe thử xem anh định bày trò gì</button>
+          <button id="btnB" class="secondary" onclick="choose(1)">Nói nhanh, em bắt đầu tò mò rồi đó</button>
+        </div>
+
+        <div class="continue-wrap" id="continueWrap">
+          <div class="continue-hint" id="continueHint">Đọc xong rồi thì mình mở tiếp nha</div>
+
+          <button class="continue-btn" id="continueBtn" onclick="goNext()">
+            <span id="continueText">Mở phong bì tiếp theo</span>
+            <i class="shine" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="stats">
+          <span id="stepCount">Chặng 1/8</span>
+          <span id="loveScore">Độ yêu thương: 12%</span>
+          <span id="mischiefScore">Độ nhây: vừa đủ yêu</span>
+        </div>
+      </section>
+
+      <section class="final-screen" id="finalScreen">
+        <div class="badge">Phiếu xác nhận hẹn hò</div>
+
+        <h1>Chốt đơn Tam Đảo thành công</h1>
+
+        <p class="main-text">
+          Cảm ơn em đã đồng ý đi cùng anh trong chuyến date kỷ niệm 6 tháng.
+          Từ giờ đến lúc khởi hành, nhiệm vụ của em chỉ là làm chính em,
+          xinh đẹp như vậy, thoải mái như vậy, và sẵn sàng tận hưởng.
+        </p>
+
+        <div class="countdown" id="countdown">
+          <div class="count-box">
+            <b id="days">--</b>
+            <small>ngày</small>
+          </div>
+
+          <div class="count-box">
+            <b id="hours">--</b>
+            <small>giờ</small>
+          </div>
+
+          <div class="count-box">
+            <b id="minutes">--</b>
+            <small>phút</small>
+          </div>
+
+          <div class="count-box">
+            <b id="seconds">--</b>
+            <small>giây</small>
+          </div>
+        </div>
+
+        <div class="ticket">
+          <h2>Lịch trình tình yêu bản rút gọn</h2>
+
+          <div class="ticket-grid">
+            <div class="ticket-item">
+              <small>Đi đâu?</small>
+              <b>Tam Đảo</b>
+            </div>
+
+            <div class="ticket-item">
+              <small>Đi bao lâu?</small>
+              <b>2 ngày 1 đêm</b>
+            </div>
+
+            <div class="ticket-item">
+              <small>Khi nào?</small>
+              <b>Ngày 27/6</b>
+            </div>
+
+            <div class="ticket-item">
+              <small>Anh đón em ở đâu?</small>
+              <b>10h sáng tại nhà Giang</b>
+            </div>
+          </div>
+
+          <ul class="checklist">
+            <li>
+              <b>Em cần chuẩn bị:</b>
+              Là chính em, luôn xinh đẹp như vậy, mang theo tâm trạng thoải mái,
+              và một chút háo hức cho chuyến đi.
+            </li>
+
+            <li>
+              <b>Anh phụ trách:</b>
+              Plan, lịch trình, di chuyển, chỗ đi chơi, đồ ăn, ảnh đẹp,
+              và toàn bộ phần chăm em.
+            </li>
+
+            <li>
+              <b>Điều khoản đặc biệt:</b>
+              Em mệt thì mình nghỉ. Em đói thì mình ăn. Em lạnh thì anh lo.
+              Em muốn được chiều thì điều khoản này tự động được kích hoạt.
+            </li>
+
+            <li>
+              <b>Mục tiêu chuyến đi:</b>
+              Không phải đi cho đủ lịch trình, mà là để tụi mình có thêm một kỷ niệm
+              thật mềm, thật vui, thật đáng nhớ sau 6 tháng yêu nhau.
+            </li>
+          </ul>
+        </div>
+
+        <p class="final-note">
+          Anh đã chuẩn bị hết rồi. Em chỉ cần đi theo anh và tận hưởng thôi.
+          Còn nếu có điều gì em thích, em chỉ cần nói, anh sẽ tự động cập nhật vào plan.
+        </p>
+
+        <div class="choices">
+          <button onclick="finalChoice('sweet')">Em sẵn sàng rồi, anh đón em nha</button>
+          <button class="secondary runaway" id="finalRunaway" onclick="finalChoice('tease')">
+            Em sẽ đi, nhưng anh phải chiều em nhiều hơn nữa
+          </button>
+        </div>
+
+        <div class="final-reply" id="finalReply" aria-live="polite"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast">Đố ấn được tui</div>
+
+  <script>
+    const CONFIG = {
+      herName: "em yêu",
+      tripPlace: "Tam Đảo",
+      duration: "2 ngày 1 đêm",
+      dateText: "27/6",
+      pickupTime: "10h sáng",
+      pickupPlace: "nhà Giang",
+      anniversary: "6 tháng",
+      targetDate: "2026-06-27T10:00:00+07:00"
+    };
+
+    const pages = [
+      {
+        badge: "Màn 1: Tin nhắn mở đầu",
+        kicker: "Có một lời mời hơi đáng yêu",
+        title: "Hi em yêu của anh",
+        text: "Anh có một thông báo vừa nghiêm túc, vừa lãng mạn, vừa hơi nhây. Nội dung chính là: anh muốn rủ em đi date.",
+        note: "Luật chơi rất đơn giản: mỗi màn có 2 lựa chọn. Em chọn gì anh cũng thương, nhưng có vài nút hơi nghịch nên có thể chạy mất.",
+        secret: false,
+        continueLabel: "Mở lời mời bí mật",
+        choices: [
+          {
+            label: "Em nghe thử xem anh định bày trò gì",
+            reaction: "Rất tốt. Em vừa mở khóa chế độ: anh nói chuyện tử tế, hồi hộp, và hơi đáng yêu quá mức cho phép.",
+            love: 11
+          },
+          {
+            label: "Nói nhanh, em bắt đầu tò mò rồi đó",
+            reaction: "Tín hiệu tò mò đã được ghi nhận. Anh xin phép dùng nó để dẫn em vào một chiếc bẫy tình yêu rất hợp pháp.",
+            love: 13
+          }
+        ]
+      },
+      {
+        badge: "Màn 2: Lý do chính đáng",
+        kicker: "Không phải tự nhiên mà anh nghiêm túc vậy",
+        title: "Sắp tới là kỷ niệm 6 tháng tụi mình yêu nhau",
+        text: "6 tháng không quá dài so với cả một đời, nhưng đủ dài để anh biết rằng anh muốn tiếp tục có thật nhiều kỷ niệm đẹp với em.",
+        note: "Và vì kỷ niệm này xứng đáng được chăm chút, anh đã âm thầm chuẩn bị một chuyến đi nhỏ.",
+        secret: false,
+        continueLabel: "Mở lý do anh chuẩn bị chuyến này",
+        choices: [
+          {
+            label: "Nghe cũng cảm động đó, nói tiếp đi",
+            reaction: "Anh chính thức nhận được 1 điểm cảm động. Chưa đủ để lên mây, nhưng đủ để anh cười hơi ngốc.",
+            love: 12
+          },
+          {
+            label: "6 tháng mà anh bày vẽ dữ vậy hả?",
+            reaction: "Đúng rồi. Vì là em nên anh thấy bày vẽ một chút cũng đáng. Thậm chí bày vẽ thêm nữa vẫn đáng.",
+            love: 15
+          }
+        ]
+      },
+      {
+        badge: "Màn 3: Tiết lộ địa điểm",
+        kicker: "Mở phong bì bí mật",
+        title: "Điểm đến là Tam Đảo",
+        text: "Một nơi có không khí mát hơn, nhịp sống chậm hơn, và rất hợp để tụi mình trốn deadline, trốn ồn ào, trốn cả những ngày mệt mỏi.",
+        note: "Chuyến đi này không phải để chạy theo lịch trình dày đặc. Nó là để em được nghỉ, được vui, và được anh chăm.",
+        secret: true,
+        continueLabel: "Mở lịch trình anh đã giấu",
+        choices: [
+          {
+            label: "Tam Đảo nghe cũng xinh đó nha",
+            reaction: "Anh biết mà. Một nơi xinh xinh, đi cùng một người rất xinh, tự nhiên thành chuyến đi quá hợp lý.",
+            love: 14
+          },
+          {
+            label: "Có lạnh không, có cần anh chăm không?",
+            reaction: "Câu hỏi này quá hay. Câu trả lời là: có lạnh hay không chưa biết, nhưng anh chăm em là chắc chắn.",
+            love: 17
+          }
+        ]
+      },
+      {
+        badge: "Màn 4: Thông tin chuyến đi",
+        kicker: "Lịch trình đã được anh cài đặt sẵn",
+        title: "Chuyến đi 2 ngày 1 đêm, bắt đầu ngày 27/6",
+        text: "10h sáng ngày 27/6, anh sẽ đón em tại nhà Giang. Từ khoảnh khắc đó, em chính thức bước vào chế độ: không cần lo, không cần nghĩ, chỉ cần tận hưởng.",
+        note: "Anh không dám hứa mọi thứ hoàn hảo 100%, nhưng anh hứa đã chuẩn bị bằng rất nhiều sự để ý và thương em.",
+        secret: true,
+        continueLabel: "Mở checklist siêu ngắn của em",
+        choices: [
+          {
+            label: "Em chỉ việc đi theo và tận hưởng thôi hả?",
+            reaction: "Đúng vậy. Đây là tour riêng 1 khách VIP, hướng dẫn viên là anh, tiêu chuẩn phục vụ là thương em hết mức.",
+            love: 16
+          },
+          {
+            label: "Nút này hơi nghi, để em ấn thử",
+            reaction: "Em đã ấn vào nút nghi ngờ. Kết quả kiểm tra: anh thật lòng, plan thật sự đã chuẩn bị, và em thật sự chỉ cần xinh.",
+            love: 18,
+            dodge: true
+          }
+        ]
+      },
+      {
+        badge: "Màn 5: Checklist của em",
+        kicker: "Danh sách chuẩn bị siêu ngắn",
+        title: "Em không cần chuẩn bị quá nhiều đâu",
+        text: "Em chỉ cần là chính em, luôn xinh đẹp như vậy, mặc gì em thấy thoải mái, mang theo một chút háo hức, và để phần còn lại cho anh.",
+        note: "Nếu em quên gì cũng không sao. Chỉ cần đừng quên đi cùng anh là được.",
+        secret: false,
+        continueLabel: "Mở điều khoản chăm em",
+        choices: [
+          {
+            label: "Nhiệm vụ này nghe dễ thương quá",
+            reaction: "Dễ thương là đúng rồi. Anh đã tối ưu checklist để em không phải stress, vì em xứng đáng được nhẹ đầu một chút.",
+            love: 14
+          },
+          {
+            label: "Nhỡ em chỉ mang theo mỗi bản thân thì sao?",
+            reaction: "Thì quá đủ. Vì trong plan của anh, phần quan trọng nhất luôn là có em ở đó.",
+            love: 19
+          }
+        ]
+      },
+      {
+        badge: "Màn 6: Điều khoản chăm sóc",
+        kicker: "Hợp đồng yêu thương không có chữ nhỏ",
+        title: "Anh đã chuẩn bị plan rồi",
+        text: "Nhưng plan này không phải kiểu ép em phải đi hết chỗ này chỗ kia. Plan này có thể linh hoạt theo tâm trạng của em, vì điều anh muốn nhất là em thấy vui và thoải mái.",
+        note: "Em muốn đi chậm thì mình đi chậm. Em muốn ăn thì mình ăn. Em muốn ngồi yên một chút cũng được.",
+        secret: true,
+        continueLabel: "Mở thử thách nhỏ trước khi chốt",
+        choices: [
+          {
+            label: "Điều khoản này nghe có lợi cho em",
+            reaction: "Chính xác. Đây là bản hợp đồng mà bên được chiều nhiều hơn là em, còn bên tự nguyện chiều là anh.",
+            love: 15
+          },
+          {
+            label: "Có điều khoản được mè nheo không?",
+            reaction: "Có. Điều khoản mè nheo được duyệt tự động. Không cần trình ký, không cần chờ phê duyệt.",
+            love: 21
+          }
+        ]
+      },
+      {
+        badge: "Màn 7: Nút nhây xuất hiện",
+        kicker: "Cảnh báo: nút này biết chạy",
+        title: "Nhưng trước khi đồng ý, em phải vượt qua một thử thách nhỏ",
+        text: "Có một nút đang rất muốn được em ấn, nhưng nó hơi nhát. Nó sẽ chạy một chút cho em cười, rồi mới chịu ngoan.",
+        note: "Nếu nút chạy mất thì không phải lỗi của em. Đó là lỗi của anh vì thích trêu em.",
+        secret: false,
+        continueLabel: "Mở câu hỏi chính thức",
+        choices: [
+          {
+            label: "Em chọn phương án dịu dàng: đồng ý nghe tiếp",
+            reaction: "Phương án dịu dàng được chấp nhận. Anh thấy tim mình được xoa đầu một cái.",
+            love: 15
+          },
+          {
+            label: "Đố ấn được tui",
+            reaction: "Cuối cùng cũng bắt được nút nghịch rồi. Nút này xác nhận: em rất kiên nhẫn, còn anh rất thích trêu em.",
+            love: 24,
+            dodge: true
+          }
+        ]
+      },
+      {
+        badge: "Màn 8: Câu hỏi chính thức",
+        kicker: "Đến đoạn quan trọng rồi",
+        title: "Em có đồng ý đi Tam Đảo với anh không?",
+        text: "Ngày 27/6 này, cho anh đón em lúc 10h sáng tại nhà Giang nhé. Mình đi 2 ngày 1 đêm, kỷ niệm 6 tháng yêu nhau, và để anh được chăm em trong một chuyến đi thật đáng nhớ.",
+        note: "Hai lựa chọn dưới đây đều hợp lệ. Một lựa chọn làm anh vui, lựa chọn còn lại làm anh vui hơn nữa.",
+        secret: false,
+        continueLabel: "Mở phiếu hẹn hò của tụi mình",
+        choices: [
+          {
+            label: "Em đồng ý, mình đi Tam Đảo thôi",
+            reaction: "Anh vừa nhận được câu trả lời đẹp nhất trong ngày. Đang tạo phiếu xác nhận hẹn hò cho em.",
+            love: 30,
+            accept: true,
+            finalType: "sweet"
+          },
+          {
+            label: "Em đồng ý nhưng anh phải chiều em đó",
+            reaction: "Điều kiện được duyệt ngay. Anh ký bằng cả trái tim, không cần đọc phụ lục.",
+            love: 35,
+            accept: true,
+            finalType: "pamper"
+          }
+        ]
+      }
+    ];
+
+    let step = 0;
+    let lovePoint = 12;
+    let locked = false;
+    let dodgeCount = 0;
+    let finalDodgeCount = 0;
+    let pendingNextAction = null;
+
+    const elements = {
+      badge: document.getElementById("badge"),
+      kicker: document.getElementById("kicker"),
+      title: document.getElementById("title"),
+      text: document.getElementById("text"),
+      note: document.getElementById("note"),
+      reaction: document.getElementById("reaction"),
+      secretBox: document.getElementById("secretBox"),
+      choiceBox: document.getElementById("choiceBox"),
+      btnA: document.getElementById("btnA"),
+      btnB: document.getElementById("btnB"),
+      continueWrap: document.getElementById("continueWrap"),
+      continueText: document.getElementById("continueText"),
+      continueHint: document.getElementById("continueHint"),
+      stepCount: document.getElementById("stepCount"),
+      loveScore: document.getElementById("loveScore"),
+      mischiefScore: document.getElementById("mischiefScore"),
+      progress: document.getElementById("progress"),
+      sideLoveFill: document.getElementById("sideLoveFill"),
+      sideLoveText: document.getElementById("sideLoveText"),
+      storyContent: document.getElementById("storyContent"),
+      finalScreen: document.getElementById("finalScreen"),
+      finalReply: document.getElementById("finalReply"),
+      finalRunaway: document.getElementById("finalRunaway"),
+      mainCard: document.getElementById("mainCard"),
+      toast: document.getElementById("toast")
+    };
+
+    function renderPage() {
+      const page = pages[step];
+
+      locked = false;
+      pendingNextAction = null;
+
+      elements.badge.innerText = page.badge;
+      elements.kicker.innerText = page.kicker;
+      elements.title.innerText = page.title;
+      elements.text.innerText = page.text;
+      elements.note.innerText = page.note;
+
+      elements.reaction.innerText = "";
+      elements.reaction.classList.remove("show");
+
+      elements.continueWrap.classList.remove("show");
+      elements.continueHint.innerText = "Đọc xong rồi thì mình mở tiếp nha";
+
+      elements.choiceBox.classList.remove("answered");
+
+      if (page.secret) {
+        elements.secretBox.classList.add("show");
+      } else {
+        elements.secretBox.classList.remove("show");
+      }
+
+      elements.btnA.innerText = page.choices[0].label;
+      elements.btnB.innerText = page.choices[1].label;
+
+      elements.btnA.disabled = false;
+      elements.btnB.disabled = false;
+
+      elements.btnB.style.left = "0px";
+      elements.btnB.style.top = "0px";
+      elements.btnB.classList.remove("runaway", "running");
+
+      if (page.choices[1].dodge) {
+        elements.btnB.classList.add("runaway");
+      }
+
+      elements.stepCount.innerText = `Chặng ${step + 1}/${pages.length}`;
+      elements.loveScore.innerText = `Độ yêu thương: ${lovePoint}%`;
+      elements.mischiefScore.innerText = step >= 6
+        ? "Độ nhây: đã bật chế độ trêu em"
+        : "Độ nhây: vừa đủ yêu";
+
+      const progress = (step / (pages.length - 1)) * 100;
+      elements.progress.style.width = `${progress}%`;
+
+      updateSideLove();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function choose(index) {
+      if (locked) return;
+
+      const page = pages[step];
+      const selected = page.choices[index];
+
+      if (selected.dodge && shouldDodge()) {
+        dodgeButton(elements.btnB);
+        return;
+      }
+
+      locked = true;
+      lovePoint = Math.min(100, lovePoint + selected.love);
+
+      updateSideLove();
+      lockChoiceButtons();
+      showReaction(selected, index);
+      prepareContinueButton(page, selected);
+    }
+
+    function lockChoiceButtons() {
+      elements.btnA.disabled = true;
+      elements.btnB.disabled = true;
+      elements.choiceBox.classList.add("answered");
+    }
+
+    function showReaction(selected, index) {
+      elements.reaction.innerText = selected.reaction;
+      elements.reaction.classList.add("show");
+
+      burstSparkles(index === 0 ? "pink" : "purple");
+
+      setTimeout(() => {
+        elements.reaction.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 120);
+    }
+
+    function prepareContinueButton(page, selected) {
+      pendingNextAction = {
+        accept: Boolean(selected.accept),
+        finalType: selected.finalType || null
+      };
+
+      elements.continueText.innerText = selected.accept
+        ? "Mở phiếu hẹn hò của tụi mình"
+        : page.continueLabel || "Mở phong bì tiếp theo";
+
+      elements.continueHint.innerText = selected.accept
+        ? "Đọc xong câu trả lời này rồi mình chốt bằng một tấm vé nhỏ nha"
+        : "Đọc xong phản hồi này rồi anh mở tiếp nha";
+
+      setTimeout(() => {
+        elements.continueWrap.classList.add("show");
+      }, 420);
+    }
+
+    function goNext() {
+      if (!pendingNextAction) return;
+
+      const action = pendingNextAction;
+      pendingNextAction = null;
+
+      burstSparkles("pink");
+
+      if (action.accept) {
+        showFinal(action.finalType);
+        return;
+      }
+
+      step++;
+      renderPage();
+    }
+
+    function shouldDodge() {
+      if (dodgeCount < 2) {
+        dodgeCount++;
+        return true;
+      }
+
+      dodgeCount = 0;
+      return false;
+    }
+
+    function dodgeButton(btn) {
+      const x = Math.random() * 140 - 70;
+      const y = Math.random() * 90 - 45;
+
+      btn.style.left = `${x}px`;
+      btn.style.top = `${y}px`;
+      btn.classList.add("running");
+
+      const lines = [
+        "Đố ấn được tui",
+        "Suýt bắt được rồi",
+        "Nút này hơi ngại",
+        "Chạy chút cho em cười thôi",
+        "Ấn thêm lần nữa xem nào"
+      ];
+
+      showToast(lines[Math.floor(Math.random() * lines.length)]);
+      burstSparkles("purple");
+
+      setTimeout(() => {
+        btn.classList.remove("running");
+      }, 360);
+    }
+
+    function showFinal(type) {
+      elements.storyContent.style.display = "none";
+      elements.finalScreen.classList.add("show");
+      elements.progress.style.width = "100%";
+
+      if (type === "pamper") {
+        document.querySelector(".final-note").innerText =
+          "Điều kiện chiều em đã được thêm vào plan. Thật ra chưa cần thêm, vì nó nằm sẵn trong plan từ đầu rồi.";
+      }
+
+      lovePoint = 100;
+      updateSideLove();
+      confettiLove();
+      startCountdown();
+
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 100);
+    }
+
+    function finalChoice(type) {
+      if (type === "tease" && finalDodgeCount < 1) {
+        finalDodgeCount++;
+        dodgeButton(elements.finalRunaway);
+        return;
+      }
+
+      if (type === "sweet") {
+        elements.finalReply.innerText =
+          "Anh sẽ đón em đúng 10h sáng ngày 27/6 tại nhà Giang. Em chỉ cần xinh đẹp và vui vẻ, còn lại để anh lo.";
+      } else {
+        elements.finalReply.innerText =
+          "Đã ghi nhận: chiều em nhiều hơn nữa. Điều khoản này được kích hoạt trong toàn bộ chuyến Tam Đảo.";
+      }
+
+      burstSparkles(type === "sweet" ? "pink" : "purple");
+      confettiLove();
+
+      setTimeout(() => {
+        elements.finalReply.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 100);
+    }
+
+    function updateSideLove() {
+      elements.sideLoveFill.style.width = `${lovePoint}%`;
+
+      if (lovePoint < 35) {
+        elements.sideLoveText.innerText = "Đang khởi động trái tim...";
+      } else if (lovePoint < 65) {
+        elements.sideLoveText.innerText = "Có vẻ em bắt đầu mềm lòng rồi.";
+      } else if (lovePoint < 95) {
+        elements.sideLoveText.innerText = "Rất gần Tam Đảo rồi đó.";
+      } else {
+        elements.sideLoveText.innerText = "Sẵn sàng đi date với anh.";
+      }
+    }
+
+    function showToast(message) {
+      elements.toast.innerText = message;
+      elements.toast.classList.add("show");
+
+      clearTimeout(window.toastTimer);
+
+      window.toastTimer = setTimeout(() => {
+        elements.toast.classList.remove("show");
+      }, 1000);
+    }
+
+    function burstSparkles(theme) {
+      const rect = elements.mainCard.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      for (let i = 0; i < 20; i++) {
+        const spark = document.createElement("span");
+
+        spark.className = "spark";
+        spark.style.left = `${centerX}px`;
+        spark.style.top = `${centerY}px`;
+        spark.style.background = theme === "purple" ? "#7b61ff" : "#ff4f8b";
+        spark.style.setProperty("--x", `${Math.random() * 280 - 140}px`);
+        spark.style.setProperty("--y", `${Math.random() * 230 - 140}px`);
+
+        document.body.appendChild(spark);
+
+        setTimeout(() => {
+          spark.remove();
+        }, 900);
+      }
+    }
+
+    function createFloatingItem() {
+      const items = ["♥", "♡", "✦", "❀", "●"];
+      const item = document.createElement("div");
+
+      item.className = "float-item";
+      item.innerText = items[Math.floor(Math.random() * items.length)];
+      item.style.left = `${Math.random() * 100}vw`;
+      item.style.fontSize = `${Math.random() * 20 + 15}px`;
+      item.style.animationDuration = `${Math.random() * 5 + 7}s`;
+
+      document.body.appendChild(item);
+
+      setTimeout(() => {
+        item.remove();
+      }, 13000);
+    }
+
+    function confettiLove() {
+      for (let i = 0; i < 80; i++) {
+        setTimeout(() => {
+          createFloatingItem();
+        }, i * 24);
+      }
+    }
+
+    function startCountdown() {
+      const target = new Date(CONFIG.targetDate).getTime();
+
+      function update() {
+        const now = new Date().getTime();
+        let distance = target - now;
+
+        if (distance < 0) {
+          document.getElementById("days").innerText = "00";
+          document.getElementById("hours").innerText = "00";
+          document.getElementById("minutes").innerText = "00";
+          document.getElementById("seconds").innerText = "00";
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        distance %= 1000 * 60 * 60 * 24;
+
+        const hours = Math.floor(distance / (1000 * 60 * 60));
+        distance %= 1000 * 60 * 60;
+
+        const minutes = Math.floor(distance / (1000 * 60));
+        distance %= 1000 * 60;
+
+        const seconds = Math.floor(distance / 1000);
+
+        document.getElementById("days").innerText = String(days).padStart(2, "0");
+        document.getElementById("hours").innerText = String(hours).padStart(2, "0");
+        document.getElementById("minutes").innerText = String(minutes).padStart(2, "0");
+        document.getElementById("seconds").innerText = String(seconds).padStart(2, "0");
+      }
+
+      update();
+
+      if (!window.countdownTimer) {
+        window.countdownTimer = setInterval(update, 1000);
+      }
+    }
+
+    elements.btnB.addEventListener("mouseenter", function () {
+      const page = pages[step];
+
+      if (page && page.choices[1].dodge && !locked && dodgeCount < 2) {
+        dodgeButton(this);
+        dodgeCount++;
+      }
+    });
+
+    elements.btnB.addEventListener("touchstart", function (event) {
+      const page = pages[step];
+
+      if (page && page.choices[1].dodge && !locked && dodgeCount < 2) {
+        event.preventDefault();
+        dodgeButton(this);
+        dodgeCount++;
+      }
+    }, { passive: false });
+
+    elements.finalRunaway.addEventListener("mouseenter", function () {
+      if (finalDodgeCount < 1) {
+        finalDodgeCount++;
+        dodgeButton(this);
+      }
+    });
+
+    elements.finalRunaway.addEventListener("touchstart", function (event) {
+      if (finalDodgeCount < 1) {
+        event.preventDefault();
+        finalDodgeCount++;
+        dodgeButton(this);
+      }
+    }, { passive: false });
+
+    setInterval(createFloatingItem, 650);
+    renderPage();
+  </script>
+</body>
+</html>
