@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dành cho em ❤️</title>
+
+<style>
+
+body{
+    margin:0;
+    background:linear-gradient(135deg,#ffe6f0,#fff7fb);
+    font-family:Arial, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+    overflow:hidden;
+}
+
+.container{
+    width:90%;
+    max-width:700px;
+}
+
+.card{
+    background:white;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+h1{
+    color:#ff4f8b;
+}
+
+p{
+    font-size:20px;
+    line-height:1.6;
+}
+
+button{
+    padding:12px 25px;
+    margin-top:20px;
+    border:none;
+    border-radius:999px;
+    background:#ff4f8b;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.heart{
+    position:absolute;
+    color:pink;
+    animation:float 8s linear infinite;
+}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-100px);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1 id="title">Chào em ❤️</h1>
+
+<p id="text">
+Anh có một điều muốn nói với em...
+</p>
+
+<button onclick="nextPage()">Tiếp tục</button>
+
+</div>
+
+</div>
+
+<script>
+
+let step = 0;
+
+const pages = [
+
+{
+title:"Chào em ❤️",
+text:"Anh biết thời gian này em đang rất mệt."
+},
+
+{
+title:"CFA 📚",
+text:"Anh biết em vừa thực tập vừa học CFA. Có những ngày em cố gắng nhiều hơn những gì mọi người nhìn thấy."
+},
+
+{
+title:"Anh thấy điều đó 🌷",
+text:"Có thể em nghĩ mình chưa đủ tốt. Nhưng anh luôn thấy em là một cô gái rất chăm chỉ, tử tế và đáng ngưỡng mộ."
+},
+
+{
+title:"Một lời nhắc nhỏ 🌙",
+text:"Em không cần phải hoàn hảo mọi lúc đâu. Đôi khi em cũng xứng đáng được nghỉ ngơi một chút."
+},
+
+{
+title:"Và vì thế...",
+text:"Anh muốn mượn em vài tiếng cuối tuần này."
+},
+
+{
+title:"❤️",
+text:"Em có đồng ý đi hẹn hò với anh không?"
+}
+
+];
+
+function nextPage(){
+
+step++;
+
+if(step < pages.length){
+
+document.getElementById("title").innerText =
+pages[step].title;
+
+document.getElementById("text").innerText =
+pages[step].text;
+
+}
+
+if(step === pages.length-1){
+
+document.querySelector("button").innerHTML =
+"Em đồng ý ❤️";
+
+document.querySelector("button").onclick =
+acceptDate;
+
+}
+
+}
+
+function acceptDate(){
+
+document.querySelector(".card").innerHTML =
+
+`
+<h1>Yayyyy ❤️</h1>
+
+<p>
+Cảm ơn em đã đồng ý.
+
+Vậy cuối tuần này anh xin phép được mời em:
+
+☕ Một ly đồ uống thật ngon
+
+🚶 Một cuộc dạo chơi thật nhẹ nhàng
+
+🌙 Và một khoảng thời gian chỉ để em được nghỉ ngơi.
+
+Anh đón em nhé ❤️
+</p>
+`;
+
+}
+
+for(let i=0;i<20;i++){
+
+const heart=document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=
+Math.random()*20+15+"px";
+
+heart.style.animationDuration=
+Math.random()*5+5+"s";
+
+document.body.appendChild(heart);
+
+}
+
+</script>
+
+</body>
+</html>
