@@ -42,14 +42,15 @@ p{
 }
 
 button{
-    padding:12px 25px;
-    margin-top:20px;
-    border:none;
-    border-radius:999px;
-    background:#ff4f8b;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
+padding:12px 25px;
+margin:10px;
+border:none;
+border-radius:999px;
+background:#ff4f8b;
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:all 0.3s ease;
 }
 
 button:hover{
@@ -80,13 +81,19 @@ button:hover{
 
 <div class="card">
 
-<h1 id="title">Chào em ❤️</h1>
+<h1 id="title">Hi em iuu của anh❤️</h1>
 
 <p id="text">
 Anh có một điều muốn nói với em...
 </p>
 
-<button onclick="nextPage()">Tiếp tục</button>
+<button onclick="choiceA()">
+👂 Em nghe nè anh iuu
+</button>
+
+<button onclick="choiceB()">
+🙈 Bí mật gì thế ạa?
+</button>
 
 </div>
 
@@ -99,8 +106,8 @@ let step = 0;
 const pages = [
 
 {
-title:"Chào em ❤️",
-text:"Anh biết thời gian này em đang rất mệt."
+title:"Anh yêu em, và yêu em rất nhiều đóaaa",
+text:"Vậy là sắp tới sẽ đến ngày kỷ niệm 6 tháng yêu nhau của tụi mình rùi, em thấy háo hức khum nàooo. Anh cũm háo hức lắm lun í"
 },
 
 {
